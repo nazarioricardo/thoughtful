@@ -35,6 +35,6 @@
       "js": ["scripts/content.js"]
     }
   ],
-  "permissions": ["declarativeNetRequest"],
+  "permissions": ["declarativeNetRequest", "storage"],
   "host_permissions": ["<all_urls>"]
 }

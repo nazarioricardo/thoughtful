@@ -1,8 +1,32 @@
 chrome.runtime.onInstalled.addListener(() => {
   console.log("INSTALLED");
-  chrome.action.setBadgeText({
-    text: "Off",
-  });
+
+  chrome.storage.sync.set({ alternates: ["https://nebula.tv"] });
+  // chrome.action.setBadgeText({
+  //   text: "Off",
+  // });
+
+  // chrome.declarativeNetRequest.updateDynamicRules(
+  //   {
+  //     removeRuleIds: [1],
+  //     addRules: [
+  //       {
+  //         id: 1,
+  //         priority: 1,
+  //         action: {
+  //           type: "redirect",
+  //           // redirect: { url: "https://www.facebook.com" },
+  //           redirect: { extensionPath: "/page/index.html" },
+  //         },
+  //         condition: {
+  //           urlFilter: "twitter.com",
+  //           resourceTypes: ["main_frame"],
+  //         },
+  //       },
+  //     ],
+  //   },
+  //   () => console.log("DECLARED")
+  // );
 });
 
 // const extensions = "https://developer.chrome.com/docs/extensions";
@@ -39,39 +63,39 @@ chrome.runtime.onInstalled.addListener(() => {
 //   }
 // });
 
-chrome.declarativeNetRequest.updateDynamicRules(
-  {
-    addRules: [
-      {
-        id: 1,
-        priority: 1,
-        action: {
-          type: "redirect",
-          redirect: { url: "https://www.facebook.com" },
-        },
-        condition: { urlFilter: "twitter.com", resourceTypes: ["main_frame"] },
-      },
-      // {
-      //   id: 1001,
-      //   priority: 1,
-      //   action: {
-      //     type: "redirect",
-      //     redirect: {
-      //       url: "https://www.facebook.com",
-      //     },
-      //   },
-      //   condition: {
-      //     urlFilter: "https://www.twitter.com",
-      //     resourceTypes: ["main_frame"],
-      //   },
-      // },
-    ],
-    removeRuleIds: [1, 2, 1001],
-  },
-  () => {
-    console.log("UPDATE");
-  }
-);
+// chrome.declarativeNetRequest.updateDynamicRules(
+//   {
+//     addRules: [
+//       {
+//         id: 1,
+//         priority: 1,
+//         action: {
+//           type: "redirect",
+//           redirect: { url: "https://www.facebook.com" },
+//         },
+//         condition: { urlFilter: "twitter.com", resourceTypes: ["main_frame"] },
+//       },
+//       // {
+//       //   id: 1001,
+//       //   priority: 1,
+//       //   action: {
+//       //     type: "redirect",
+//       //     redirect: {
+//       //       url: "https://www.facebook.com",
+//       //     },
+//       //   },
+//       //   condition: {
+//       //     urlFilter: "https://www.twitter.com",
+//       //     resourceTypes: ["main_frame"],
+//       //   },
+//       // },
+//     ],
+//     removeRuleIds: [1, 2, 1001],
+//   },
+//   () => {
+//     console.log("UPDATE");
+//   }
+// );
 
 // chrome.webRequest.onBeforeRequest.addListener(
 //   (event) => {
@@ -82,3 +106,14 @@ chrome.declarativeNetRequest.updateDynamicRules(
 //   },
 //   ["blocking"]
 // );
+
+// Get arrays containing new and old rules
+// const newRules = await getNewRules();
+// const oldRules = await chrome.declarativeNetRequest.getDynamicRules();
+// const oldRuleIds = oldRules.map(rule => rule.id);
+
+// // Use the arrays to update the dynamic rules
+// await chrome.declarativeNetRequest.updateDynamicRules({
+//   removeRuleIds: oldRuleIds,
+//   addRules: newRules
+// });
