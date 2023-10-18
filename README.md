@@ -9,5 +9,3 @@ If out of habit I type YouTube.com, it shows me a full screen prompting me with 
 The question could be something like “Why now?” And I can type “I really want to see if videogamedunkey has a new video.” Some simple validation parameters could be set, such as a minimum length for the string, having actual words, nothing fancy. The plug-in unblocks the site and puts my answer as a sticky somewhere on the screen, and/or asks me at some point if I’ve accomplished my goal.
 
 This plug-in is simultaneously more forgiving and more encouraging. It is also a carrot, instead of a stick, approach when it nudges you to some other website that might be more productive. I think, by giving you the option to answer the question, it also makes you less likely to completely disable it, by also letting you have the small moment to take a break, or even check out a productive video on YouTube.
-
-I have already started experimenting with building plug-ins for Chrome, and I am very interested in continuing this effort.
