@@ -24,5 +24,17 @@
         "mac": "Command+B"
       }
     }
-  }
+  },
+
+  "background": {
+    "service_worker": "static/js/background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["static/js/content.js"]
+    }
+  ],
+  "permissions": ["declarativeNetRequest", "storage"],
+  "host_permissions": ["<all_urls>"]
 }
