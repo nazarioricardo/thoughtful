@@ -1,5 +1,16 @@
+const URL_OR_HOST_REGEX =
+  /^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/;
+const HTTPS_REGEX = /^https:\/\//i;
+const HTTP_REGEX = /^http:\/\//i;
+const PROTOCOL = "https://";
+
 const blockForm = document.getElementById("block-form");
+const blockInput = document.getElementById("block-url-input");
+const errorDiv = document.getElementById("error-message");
+const filterList = document.getElementById("filter-list");
+
 let storage;
+let error;
 
 const smallestPositiveInteger = (ids) => {
   const pos = ids.filter((num) => num >= 1).sort((a, b) => a - b);
@@ -26,63 +37,103 @@ const getNextId = () => {
   return smallestPositiveInteger(ids);
 };
 
-window.onload = async () => {
-  console.log("onload");
-  storage = await chrome.storage.sync.get();
+const renderUrlListItem = (url, id) => {
+  filterList.innerHTML =
+    filterList.innerHTML + `<li id="${"item" + id}">${url}</li>`;
 };
 
-const onBlockWebsite = async (event) => {
-  event.preventDefault();
-  const url = document.getElementById("url").value;
-  const nextId = getNextId();
-
-  const newStore = await chrome.storage.sync.set({
+const addUrl = async (url, id) => {
+  await chrome.storage.sync.set({
     [url]: {
       bypass: false,
       alternates: [],
-      id: nextId,
+      id: id,
     },
   });
 
-  // const rules = await chrome.declarativeNetRequest.getDynamicRules();
-  // console.log(JSON.stringify(rules));
-
-  // [
-  //   {
-  //     action: {
-  //       redirect: { extensionPath: "/page/index.html" },
-  //       type: "redirect",
-  //     },
-  //     condition: { resourceTypes: ["main_frame"], urlFilter: "twitter.com" },
-  //     id: 1,
-  //     priority: 1,
-  //   },
-  // ];
-
   await chrome.declarativeNetRequest.updateDynamicRules(
     {
-      removeRuleIds: [1],
       addRules: [
         {
-          id: 1,
+          id: id,
           priority: 1,
           action: {
             type: "redirect",
-            // redirect: { url: "https://www.facebook.com" },
             redirect: {
-              extensionPath: "/page/index.html#https://twitter.com",
+              extensionPath: "/page/index.html#" + url,
             },
           },
           condition: {
-            urlFilter: "twitter.com",
-            // regexFilter: "^(https://twitter.com|https://github.com)",
+            urlFilter: url,
             resourceTypes: ["main_frame"],
           },
         },
       ],
     },
-    () => console.log("DECLARED")
+    () => {
+      renderUrlListItem(url, id);
+    }
   );
 };
 
+const removeUrlListItem = (url, id) => {
+  const listItem = document.getElementById("item" + id);
+  listItem.remove();
+};
+
+const removeUrl = async (url) => {
+  const urlData = await chrome.storage.sync.get(url);
+
+  if (!urlData) {
+    throw Error("Could not find URL in storage");
+  }
+
+  await chrome.storage.sync.remove(url);
+  await await chrome.declarativeNetRequest.updateDynamicRules(
+    {
+      removeRuleIds: [urlData.id],
+    },
+    () => {
+      removeUrlListItem(url, urlData.id);
+    }
+  );
+};
+
+const onBlockWebsite = async (event) => {
+  event.preventDefault();
+  let url = blockInput.value;
+  const isValidInput = URL_OR_HOST_REGEX.test(url);
+
+  if (!isValidInput) {
+    error = new Error("Please input a valid web address.");
+    errorDiv.innerHTML = "<p>" + error.message + "</p>";
+    console.log("error");
+    return;
+  }
+
+  const requiresProtocol = !HTTPS_REGEX.test(url) && !HTTP_REGEX.test(url);
+  if (requiresProtocol) {
+    url = PROTOCOL + url;
+  }
+
+  const nextId = getNextId();
+  await addUrl(url, nextId);
+  blockInput.value = "";
+};
+
+const onInputWebsite = () => {
+  error = undefined;
+  errorDiv.innerHTML = "";
+};
+
+window.onload = async () => {
+  storage = await chrome.storage.sync.get();
+  console.log("onload", storage);
+
+  Object.keys(storage).forEach((key) => {
+    renderUrlListItem(key);
+  });
+};
+
 blockForm.addEventListener("submit", onBlockWebsite);
+blockInput.addEventListener("input", onInputWebsite);

@@ -10,11 +10,15 @@
     <h1>Hello Extensions</h1>
     <form id="block-form">
       <label
-        >Block Website
-        <input id="url" type="url" name="url" placeholder="Url" />
+        >Filter
+        <input id="block-url-input" name="url" placeholder="Add any website" />
       </label>
-      <button>Submit</button>
+      <button type="submit">Submit</button>
     </form>
+    <div id="error-message"></div>
+    <div>
+      <ul id="filter-list"></ul>
+    </div>
     <script src="script.js"></script>
   </body>
 </html>
