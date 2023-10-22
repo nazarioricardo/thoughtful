@@ -1,8 +1,6 @@
-html {
-  margin: 0;
-}
-
 body {
   width: 324px;
   max-height: 600px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
