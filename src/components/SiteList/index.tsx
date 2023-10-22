@@ -6,9 +6,10 @@ import { Cancel, Check, Edit } from "@mui/icons-material";
 type SiteListProps = {
   sites: string[];
   storage: Storage;
+  onDelete: (sites: string[]) => void;
 };
 
-function SiteList({ sites, storage }: SiteListProps) {
+function SiteList({ sites, storage, onDelete }: SiteListProps) {
   const [isEditing, setIsEditing] = useState<boolean>(false);
   const [toDelete, setToDelete] = useState<string[]>([]);
 
@@ -25,6 +26,11 @@ function SiteList({ sites, storage }: SiteListProps) {
     }
 
     setToDelete([...toDelete, url]);
+  };
+
+  const onConfirmDeletion = () => {
+    onDelete(toDelete);
+    setIsEditing(false);
   };
 
   console.log(toDelete);
@@ -56,7 +62,7 @@ function SiteList({ sites, storage }: SiteListProps) {
             <Button
               color="danger"
               variant="soft"
-              onClick={toggleEditing}
+              onClick={onConfirmDeletion}
               startDecorator={<Check />}
             >
               Confirm

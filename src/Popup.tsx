@@ -106,6 +106,10 @@ function Popup() {
     return smallestPositiveInteger(ids);
   };
 
+  const onDelete = async (sites: string[]) => {
+    await Chrome.storage.sync.remove(sites);
+  };
+
   useEffect(() => {
     Chrome.storage.sync.get().then((newStorage) => {
       setSites(Object.keys(newStorage));
@@ -156,7 +160,9 @@ function Popup() {
           </FormHelperText>
         </FormControl>
 
-        {storage && <SiteList sites={sites} storage={storage} />}
+        {storage && (
+          <SiteList sites={sites} storage={storage} onDelete={onDelete} />
+        )}
         {!storage && <span>Loading...</span>}
       </Sheet>
     </CssVarsProvider>
