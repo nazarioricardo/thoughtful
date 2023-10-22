@@ -1,5 +1,6 @@
 import Chrome from "webextension-polyfill";
 import { FormEvent, useEffect, useState } from "react";
+import SiteListItem from "./components/SiteListItem";
 import "./Popup.css";
 
 const URL_OR_HOST_REGEX =
@@ -27,14 +28,6 @@ function Popup() {
   const [sites, setSites] = useState<string[]>([]);
 
   const addUrl = async (url: string, id: number) => {
-    await Chrome.storage.sync.set({
-      [url]: {
-        bypass: false,
-        alternates: [],
-        id: id,
-      },
-    });
-
     await Chrome.declarativeNetRequest.updateDynamicRules({
       addRules: [
         {
@@ -58,6 +51,16 @@ function Popup() {
       ],
     });
 
+    await Chrome.storage.sync.set({
+      [url]: {
+        bypass: false,
+        alternates: [],
+        id: id,
+      },
+    });
+
+    const newStorage = await Chrome.storage.sync.get();
+    setStorage(newStorage as Storage);
     setSites([...sites, url]);
   };
 
@@ -95,9 +98,9 @@ function Popup() {
   };
 
   useEffect(() => {
-    Chrome.storage.sync.get().then((store) => {
-      setSites(Object.keys(store));
-      setStorage(storage);
+    Chrome.storage.sync.get().then((newStorage) => {
+      setSites(Object.keys(newStorage));
+      setStorage(newStorage as Storage);
     });
 
     console.log(Chrome.extension.getViews());
@@ -113,9 +116,22 @@ function Popup() {
         </label>
         <button type="submit">Submit</button>
       </form>
-      {sites.map((site) => (
-        <p>{site}</p>
-      ))}
+      <div>{error && <p>{error.message}</p>}</div>
+      {storage &&
+        sites.map((site) => {
+          const { id, isBypassed, alternates } = storage[site];
+
+          return (
+            <SiteListItem
+              key={id}
+              url={site}
+              isBypassed={isBypassed}
+              alternates={alternates}
+            />
+          );
+        })}
+
+      {!storage && <span>Loading...</span>}
     </div>
   );
 }
