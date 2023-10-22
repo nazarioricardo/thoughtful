@@ -2,6 +2,7 @@ import Chrome from "webextension-polyfill";
 import { FormEvent, useEffect, useState } from "react";
 import SiteListItem from "./components/SiteListItem";
 import "./Popup.css";
+import SiteList from "./components/SiteList";
 
 const URL_OR_HOST_REGEX =
   /^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/;
@@ -116,21 +117,8 @@ function Popup() {
         </label>
         <button type="submit">Submit</button>
       </form>
-      <div>{error && <p>{error.message}</p>}</div>
-      {storage &&
-        sites.map((site) => {
-          const { id, isBypassed, alternates } = storage[site];
-
-          return (
-            <SiteListItem
-              key={id}
-              url={site}
-              isBypassed={isBypassed}
-              alternates={alternates}
-            />
-          );
-        })}
-
+      <div>{error && <span>{error.message}</span>}</div>
+      {storage && <SiteList sites={sites} storage={storage} />}
       {!storage && <span>Loading...</span>}
     </div>
   );
