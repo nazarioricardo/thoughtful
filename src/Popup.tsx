@@ -107,7 +107,19 @@ function Popup() {
   };
 
   const onDelete = async (sites: string[]) => {
+    if (!storage) {
+      return;
+    }
+
+    const sitesInStorage = await Chrome.storage.sync.get(sites);
+    const ids = Object.keys(sitesInStorage).map((s) => storage[s].id);
     await Chrome.storage.sync.remove(sites);
+    await Chrome.declarativeNetRequest.updateDynamicRules({
+      removeRuleIds: ids,
+    });
+    const newStorage = await Chrome.storage.sync.get();
+    setStorage(newStorage as Storage);
+    setSites(Object.keys(newStorage));
   };
 
   useEffect(() => {
