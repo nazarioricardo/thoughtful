@@ -1,8 +1,9 @@
 import Chrome from "webextension-polyfill";
-import { useEffect, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
 
 import SiteList from "./components/SiteList";
 import {
+  CssVarsProvider,
   Button,
   FormControl,
   FormHelperText,
@@ -74,7 +75,8 @@ function Popup() {
     setSites([...sites, url]);
   };
 
-  const onSubmitForm = async () => {
+  const onSubmitForm = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
     const isValidInput = URL_OR_HOST_REGEX.test(text);
     if (!isValidInput) {
       setError(new Error("Please input a valid web address."));
@@ -89,6 +91,7 @@ function Popup() {
 
     const nextId = getNextId();
     await addUrl(url, nextId);
+    setText("");
   };
 
   const getNextId = () => {
@@ -113,44 +116,50 @@ function Popup() {
   }, []);
 
   return (
-    <Sheet>
-      <FormControl error={Boolean(error)}>
-        <FormLabel>Be Intentional</FormLabel>
-        <Input
-          sx={{ "--Input-decoratorChildHeight": "45px" }}
-          onChange={(event) => {
-            setError(undefined);
-            setText(event.target.value);
-          }}
-          placeholder="Add a website here..."
-          required
-          endDecorator={
-            <Button
-              variant="solid"
-              color="primary"
-              onClick={onSubmitForm}
-              type="submit"
-              startDecorator={<Add />}
-              sx={{ borderTopLeftRadius: 0, borderBottomLeftRadius: 0 }}
-            >
-              Add
-            </Button>
-          }
-        />
+    <CssVarsProvider defaultMode="system">
+      <Sheet sx={{ padding: 2 }}>
+        <FormControl error={Boolean(error)}>
+          <FormLabel>Be Intentional</FormLabel>
+          <form onSubmit={onSubmitForm}>
+            <Input
+              sx={{ "--Input-decoratorChildHeight": "45px" }}
+              value={text}
+              onChange={(event) => {
+                setError(undefined);
+                setText(event.target.value);
+              }}
+              name="url"
+              placeholder="Add a website here..."
+              required
+              variant="soft"
+              endDecorator={
+                <Button
+                  variant="solid"
+                  color="primary"
+                  type="submit"
+                  startDecorator={<Add />}
+                  sx={{ borderTopLeftRadius: 0, borderBottomLeftRadius: 0 }}
+                >
+                  Add
+                </Button>
+              }
+            />
+          </form>
 
-        <FormHelperText sx={{ minHeight: 32, margin: 0 }}>
-          {error && (
-            <>
-              <InfoOutlined />
-              {error.message}
-            </>
-          )}
-        </FormHelperText>
-      </FormControl>
+          <FormHelperText sx={{ minHeight: 32, margin: 0 }}>
+            {error && (
+              <>
+                <InfoOutlined />
+                {error.message}
+              </>
+            )}
+          </FormHelperText>
+        </FormControl>
 
-      {storage && <SiteList sites={sites} storage={storage} />}
-      {!storage && <span>Loading...</span>}
-    </Sheet>
+        {storage && <SiteList sites={sites} storage={storage} />}
+        {!storage && <span>Loading...</span>}
+      </Sheet>
+    </CssVarsProvider>
   );
 }
 
