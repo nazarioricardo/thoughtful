@@ -1,8 +1,16 @@
 import Chrome from "webextension-polyfill";
-import { FormEvent, useEffect, useState } from "react";
-import SiteListItem from "./components/SiteListItem";
-import "./Popup.css";
+import { useEffect, useState } from "react";
+
 import SiteList from "./components/SiteList";
+import {
+  Button,
+  FormControl,
+  FormHelperText,
+  FormLabel,
+  Input,
+  Sheet,
+} from "@mui/joy";
+import { Add, InfoOutlined } from "@mui/icons-material";
 
 const URL_OR_HOST_REGEX =
   /^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/;
@@ -27,6 +35,7 @@ function Popup() {
   const [error, setError] = useState<Error | undefined>();
   const [storage, setStorage] = useState<Storage | undefined>();
   const [sites, setSites] = useState<string[]>([]);
+  const [text, setText] = useState<string>("");
 
   const addUrl = async (url: string, id: number) => {
     await Chrome.declarativeNetRequest.updateDynamicRules({
@@ -65,18 +74,14 @@ function Popup() {
     setSites([...sites, url]);
   };
 
-  const onSubmitForm = async (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    const target = event.target as typeof event.target & {
-      url: { value: string };
-    };
-
-    let url = target.url.value;
-    const isValidInput = URL_OR_HOST_REGEX.test(url);
+  const onSubmitForm = async () => {
+    const isValidInput = URL_OR_HOST_REGEX.test(text);
     if (!isValidInput) {
       setError(new Error("Please input a valid web address."));
       return;
     }
+
+    let url = text;
     const isMissingProtocol = !HTTPS_REGEX.test(url) && !HTTP_REGEX.test(url);
     if (isMissingProtocol) {
       url = PROTOCOL + url;
@@ -108,19 +113,44 @@ function Popup() {
   }, []);
 
   return (
-    <div className="Popup">
-      <h1>Thoughtful Web Filter</h1>
-      <form onSubmit={onSubmitForm}>
-        <label>
-          Filter
-          <input name="url" placeholder="Add any website" />
-        </label>
-        <button type="submit">Submit</button>
-      </form>
-      <div>{error && <span>{error.message}</span>}</div>
+    <Sheet>
+      <FormControl error={Boolean(error)}>
+        <FormLabel>Be Intentional</FormLabel>
+        <Input
+          sx={{ "--Input-decoratorChildHeight": "45px" }}
+          onChange={(event) => {
+            setError(undefined);
+            setText(event.target.value);
+          }}
+          placeholder="Add a website here..."
+          required
+          endDecorator={
+            <Button
+              variant="solid"
+              color="primary"
+              onClick={onSubmitForm}
+              type="submit"
+              startDecorator={<Add />}
+              sx={{ borderTopLeftRadius: 0, borderBottomLeftRadius: 0 }}
+            >
+              Add
+            </Button>
+          }
+        />
+
+        <FormHelperText sx={{ minHeight: 32, margin: 0 }}>
+          {error && (
+            <>
+              <InfoOutlined />
+              {error.message}
+            </>
+          )}
+        </FormHelperText>
+      </FormControl>
+
       {storage && <SiteList sites={sites} storage={storage} />}
       {!storage && <span>Loading...</span>}
-    </div>
+    </Sheet>
   );
 }
 
