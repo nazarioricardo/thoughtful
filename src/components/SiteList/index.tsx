@@ -1,7 +1,7 @@
-import { Button, Grid, List, Stack } from "@mui/joy";
+import { Button, Divider, Grid, List, Stack } from "@mui/joy";
 import SiteListItem from "../SiteListItem";
 import { useState } from "react";
-import { Edit } from "@mui/icons-material";
+import { Cancel, Check, Edit } from "@mui/icons-material";
 
 type SiteListProps = {
   sites: string[];
@@ -10,10 +10,24 @@ type SiteListProps = {
 
 function SiteList({ sites, storage }: SiteListProps) {
   const [isEditing, setIsEditing] = useState<boolean>(false);
+  const [toDelete, setToDelete] = useState<string[]>([]);
 
   const toggleEditing = () => {
+    setToDelete([]);
     setIsEditing(!isEditing);
   };
+
+  const markToDelete = (url: string) => {
+    if (toDelete.includes(url)) {
+      const filtered = toDelete.filter((s) => s !== url);
+      setToDelete(filtered);
+      return;
+    }
+
+    setToDelete([...toDelete, url]);
+  };
+
+  console.log(toDelete);
 
   return (
     <Stack direction="column" justifyContent="flex-start" alignItems="stretch">
@@ -22,21 +36,43 @@ function SiteList({ sites, storage }: SiteListProps) {
           <SiteListItem
             key={site}
             url={site}
+            markToDelete={markToDelete}
             isBypassed={storage[site].bypass}
             alternates={storage[site].alternates}
             isEditing={isEditing}
+            isDeleting={toDelete.includes(site)}
           />
         ))}
       </List>
 
-      <Button
-        sx={{ alignSelf: "flex-end" }}
-        variant="soft"
-        onClick={toggleEditing}
-        startDecorator={<Edit />}
+      <Grid
+        container
+        flexDirection={"row"}
+        justifyContent={"space-between"}
+        sx={{ paddingTop: 2 }}
       >
-        Edit
-      </Button>
+        <Grid>
+          {isEditing && (
+            <Button
+              color="danger"
+              variant="soft"
+              onClick={toggleEditing}
+              startDecorator={<Check />}
+            >
+              Confirm
+            </Button>
+          )}
+        </Grid>
+        <Grid>
+          <Button
+            variant="soft"
+            onClick={toggleEditing}
+            startDecorator={isEditing ? <Cancel /> : <Edit />}
+          >
+            {isEditing ? "Cancel" : "Edit"}
+          </Button>
+        </Grid>
+      </Grid>
     </Stack>
   );
 }
