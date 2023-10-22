@@ -1,4 +1,4 @@
-import { Button, Grid, List } from "@mui/joy";
+import { Button, Grid, List, Stack } from "@mui/joy";
 import SiteListItem from "../SiteListItem";
 import { useState } from "react";
 import { Edit } from "@mui/icons-material";
@@ -16,31 +16,28 @@ function SiteList({ sites, storage }: SiteListProps) {
   };
 
   return (
-    <Grid container justifyContent={"flex-end"}>
-      <Grid xs={12}>
-        <List>
-          {sites.map((site) => (
-            <SiteListItem
-              key={site}
-              url={site}
-              isBypassed={storage[site].bypass}
-              alternates={storage[site].alternates}
-              isEditing={isEditing}
-            />
-          ))}
-        </List>
-      </Grid>
-      <Grid xs={8} />
-      <Grid xs={4}>
-        <Button
-          variant="soft"
-          onClick={toggleEditing}
-          startDecorator={<Edit />}
-        >
-          Edit
-        </Button>
-      </Grid>
-    </Grid>
+    <Stack direction="column" justifyContent="flex-start" alignItems="stretch">
+      <List>
+        {sites.map((site) => (
+          <SiteListItem
+            key={site}
+            url={site}
+            isBypassed={storage[site].bypass}
+            alternates={storage[site].alternates}
+            isEditing={isEditing}
+          />
+        ))}
+      </List>
+
+      <Button
+        sx={{ alignSelf: "flex-end" }}
+        variant="soft"
+        onClick={toggleEditing}
+        startDecorator={<Edit />}
+      >
+        Edit
+      </Button>
+    </Stack>
   );
 }
 
