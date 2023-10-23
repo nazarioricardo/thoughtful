@@ -1,13 +1,85 @@
 import { Add, ArrowRight, InfoOutlined } from "@mui/icons-material";
 import { Button, FormControl, FormHelperText, Input } from "@mui/joy";
-import { useState } from "react";
+import {
+  URL_OR_HOST_REGEX,
+  HTTPS_REGEX,
+  HTTP_REGEX,
+  PROTOCOL,
+} from "./../../../constants";
+import { FormEvent, useRef, useState } from "react";
 
-function AlternatesForm() {
+type AlternatesFormProps = {
+  alternates: string[];
+  onAdd: (alternate: string) => void;
+};
+
+function AlternatesForm({ alternates, onAdd }: AlternatesFormProps) {
   const [text, setText] = useState<string>("");
   const [error, setError] = useState<Error | undefined>();
-  const onSubmitForm = (event: React.FormEvent<HTMLFormElement>) => {};
+  const formRef = useRef<HTMLFormElement>(null);
+
+  const getUrlFromText = (): string => {
+    const isValidInput = URL_OR_HOST_REGEX.test(text);
+    if (!isValidInput) {
+      setError(new Error("Please input a valid web address."));
+      throw error;
+    }
+
+    let url = text;
+    const isMissingProtocol = !HTTPS_REGEX.test(url) && !HTTP_REGEX.test(url);
+    if (isMissingProtocol) {
+      url = PROTOCOL + url;
+    }
+
+    return url;
+  };
+
+  const addUrl = (): string => {
+    if (alternates.length > 3) {
+      throw new Error("Max of 3 alternates allowed.");
+    }
+
+    let url;
+    try {
+      url = getUrlFromText();
+    } catch (error) {
+      throw error;
+    }
+
+    onAdd(url);
+    return url;
+  };
+
+  const onSubmitForm = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    try {
+      const url = addUrl();
+      window.location.replace(url);
+    } catch (err) {
+      if (err instanceof Error) {
+        setError(err);
+      }
+
+      console.error(err);
+    }
+  };
+
+  const onJustAdd = () => {
+    try {
+      const url = addUrl();
+      onAdd(url);
+      setText("");
+    } catch (err) {
+      if (err instanceof Error) {
+        setError(err);
+      }
+
+      console.error(err);
+    }
+  };
+
   return (
-    <form onSubmit={onSubmitForm}>
+    <form ref={formRef} onSubmit={onSubmitForm}>
       <FormControl>
         <Input
           sx={{ "--Input-decoratorChildHeight": "45px" }}
@@ -35,8 +107,8 @@ function AlternatesForm() {
         <Button
           variant="solid"
           color="neutral"
-          type="submit"
           startDecorator={<Add />}
+          onClick={onJustAdd}
         >
           Just Add
         </Button>

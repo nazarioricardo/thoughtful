@@ -11,7 +11,7 @@ function Alternates({ alternates, onAdd }: AlternatesProps) {
   return (
     <>
       <Typography level={"body-lg"}>Try going somewhere else...</Typography>
-      <AlternatesForm />
+      <AlternatesForm alternates={alternates} onAdd={onAdd} />
       <AlternatesList alternates={alternates} />
     </>
   );

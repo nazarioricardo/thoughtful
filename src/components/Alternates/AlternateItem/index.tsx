@@ -1,4 +1,5 @@
 import { Link } from "@mui/joy";
+import { getHostName } from "../../../constants";
 
 type AlternateItemProps = {
   alternate: string;
@@ -6,8 +7,8 @@ type AlternateItemProps = {
 
 function AlternateItem({ alternate }: AlternateItemProps) {
   return (
-    <Link level="title-lg" underline="none">
-      {alternate}
+    <Link href={alternate} level="title-lg">
+      {getHostName(alternate)}
     </Link>
   );
 }

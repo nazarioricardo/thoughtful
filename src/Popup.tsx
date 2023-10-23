@@ -1,6 +1,11 @@
 import Chrome from "webextension-polyfill";
 import { FormEvent, useEffect, useState } from "react";
-
+import {
+  URL_OR_HOST_REGEX,
+  HTTPS_REGEX,
+  HTTP_REGEX,
+  PROTOCOL,
+} from "./constants";
 import SiteList from "./components/SiteList";
 import {
   CssVarsProvider,
@@ -12,12 +17,6 @@ import {
   Sheet,
 } from "@mui/joy";
 import { Add, InfoOutlined } from "@mui/icons-material";
-
-const URL_OR_HOST_REGEX =
-  /^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/;
-const HTTPS_REGEX = /^https:\/\//i;
-const HTTP_REGEX = /^http:\/\//i;
-const PROTOCOL = "https://";
 
 const smallestPositiveInteger = (ids: number[]) => {
   const pos = ids.filter((num) => num >= 1).sort((a, b) => a - b);

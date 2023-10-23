@@ -1,8 +1,8 @@
+import { useEffect, useState } from "react";
 import Chrome from "webextension-polyfill";
 import { CssVarsProvider, Sheet, Stack, Typography } from "@mui/joy";
-import { useEffect, useState } from "react";
 import Alternates from "./components/Alternates";
-
+import { getHostName } from "./constants";
 type AppProps = {
   url: string;
 };
@@ -13,10 +13,13 @@ type AppProps = {
 
 function App({ url }: AppProps) {
   const [alternates, setAlternates] = useState<string[]>([]);
-  const hostname = url.replace(/(^\w+:|^)\/\//, "");
+  const [error, setError] = useState<Error | undefined>();
+  const hostname = getHostName(url);
 
   const onAddAlternate = async (alternate: string) => {
-    const newAlternates = [...alternates, alternate];
+    const oldAlternates = alternates.filter((alt) => alt !== alternate);
+    const newAlternates = [...oldAlternates, alternate];
+
     setAlternates(newAlternates);
 
     await Chrome.storage.sync.set({
@@ -36,9 +39,8 @@ function App({ url }: AppProps) {
 
   return (
     <main>
-      <style></style>
       <CssVarsProvider defaultMode="system">
-        <Sheet sx={{ height: "100%" }}>
+        <Sheet sx={{ height: "100vh", width: "100vw" }}>
           <Stack justifyContent={"center"} alignItems={"center"}>
             <Typography level={"body-lg"}>
               You're trying to go to {hostname}.
