@@ -36,7 +36,6 @@ type AppProps = {
 
 function App({ url }: AppProps) {
   const [alternates, setAlternates] = useState<string[]>([]);
-  const [error, setError] = useState<Error | undefined>();
   const hostname = getHostName(url);
 
   const onAddAlternate = async (alternate: string) => {
