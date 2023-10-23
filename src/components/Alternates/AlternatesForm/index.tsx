@@ -25,7 +25,7 @@ function AlternatesForm() {
               variant="solid"
               color="primary"
               type="submit"
-              startDecorator={<ArrowRight />}
+              endDecorator={<ArrowRight />}
               sx={{ borderTopLeftRadius: 0, borderBottomLeftRadius: 0 }}
             >
               Add and Go
@@ -33,8 +33,8 @@ function AlternatesForm() {
           }
         />
         <Button
-          variant="soft"
-          color="primary"
+          variant="solid"
+          color="neutral"
           type="submit"
           startDecorator={<Add />}
         >

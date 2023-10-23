@@ -1,6 +1,5 @@
 import Chrome from "webextension-polyfill";
 import { CssVarsProvider, Sheet, Stack, Typography } from "@mui/joy";
-import "./App.css";
 import { useEffect, useState } from "react";
 import Alternates from "./components/Alternates";
 
@@ -37,6 +36,7 @@ function App({ url }: AppProps) {
 
   return (
     <main>
+      <style></style>
       <CssVarsProvider defaultMode="system">
         <Sheet sx={{ height: "100%" }}>
           <Stack justifyContent={"center"} alignItems={"center"}>
