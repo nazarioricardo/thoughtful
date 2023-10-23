@@ -34,9 +34,20 @@ function SiteListItem({
     });
   };
 
-  const shouldGray = isDeleting || isBypassed;
+  const getItemVariant = () => {
+    if (isDeleting) {
+      return "solid";
+    }
+
+    if (isBypassed) {
+      return "soft";
+    }
+
+    return "plain";
+  };
+
   return (
-    <ListItem variant={shouldGray ? "soft" : "plain"}>
+    <ListItem variant={getItemVariant()}>
       <ListItemButton onClick={onClick}>
         <ListItemDecorator>
           <Http />
