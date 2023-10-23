@@ -11,6 +11,29 @@ type AppProps = {
 // Jurassic Park "You didn't say the magic word!"
 // Larry David "How did I end up here?"
 
+// const useAbortController = (url: string, data: object, dependencies: any[]) => {
+//   const abortController = new AbortController();
+//   useEffect(() => {
+//     const { signal } = abortController;
+//     fetch(url, { signal, ...data })
+//       .then((response) => {
+//         return response;
+//       })
+//       .catch((error) => {
+//         if (error.name === "AbortError") {
+//           console.log("Operation aborted");
+//           return;
+//         }
+
+//         throw error;
+//       });
+
+//     return () => {
+//       abortController.abort;
+//     };
+//   }, [...dependencies]);
+// };
+
 function App({ url }: AppProps) {
   const [alternates, setAlternates] = useState<string[]>([]);
   const [error, setError] = useState<Error | undefined>();
