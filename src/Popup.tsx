@@ -131,7 +131,7 @@ function Popup() {
   }, []);
 
   return (
-    <CssVarsProvider defaultMode="system">
+    <CssVarsProvider defaultMode="dark">
       <Sheet sx={{ padding: 2 }}>
         <FormControl error={Boolean(error)}>
           <FormLabel>Be Intentional</FormLabel>
