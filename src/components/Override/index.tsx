@@ -17,7 +17,7 @@ function Override() {
           }}
           name="reason"
           placeholder="Set your intention here..."
-          variant="plain"
+          variant="soft"
           required
         />
         <Button variant="solid" type="submit" endDecorator={<ArrowRight />}>
