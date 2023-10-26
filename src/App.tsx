@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import Chrome from "webextension-polyfill";
-import { CssVarsProvider, Sheet, Stack, Typography } from "@mui/joy";
+import { Button, CssVarsProvider, Sheet, Stack, Typography } from "@mui/joy";
 import Alternates from "./components/Alternates";
 import { getHostName } from "./constants";
+import Override from "./components/Override";
 type AppProps = {
   url: string;
 };
@@ -12,6 +13,7 @@ type AppProps = {
 // Larry David "How did I end up here?"
 
 function App({ url }: AppProps) {
+  const [isOverriding, setIsOverriding] = useState(false);
   const [alternates, setAlternates] = useState<string[]>([]);
   const hostname = getHostName(url);
 
@@ -40,6 +42,10 @@ function App({ url }: AppProps) {
     });
   };
 
+  const onOverride = () => {
+    setIsOverriding(true);
+  };
+
   useEffect(() => {
     Chrome.storage.sync.get([url]).then((result) => {
       if (result[url]) {
@@ -61,11 +67,17 @@ function App({ url }: AppProps) {
               Try going somewhere else...
             </Typography>
 
-            <Alternates
-              alternates={alternates}
-              onAdd={onAddAlternate}
-              onDelete={onDeleteAlternates}
-            />
+            <Button onClick={onOverride}>Nope! I wanna go to {hostname}</Button>
+
+            {isOverriding ? (
+              <Override />
+            ) : (
+              <Alternates
+                alternates={alternates}
+                onAdd={onAddAlternate}
+                onDelete={onDeleteAlternates}
+              />
+            )}
           </Stack>
         </Sheet>
       </CssVarsProvider>
