@@ -20,10 +20,22 @@ function App({ url }: AppProps) {
     const newAlternates = [...oldAlternates, alternate];
 
     setAlternates(newAlternates);
-
     await Chrome.storage.sync.set({
       [url]: {
         alternates: newAlternates,
+      },
+    });
+  };
+
+  const onDeleteAlternates = async (forDeletion: string[]) => {
+    const undeletedAlternates = alternates.filter(
+      (alt) => !forDeletion.includes(alt)
+    );
+
+    setAlternates(undeletedAlternates);
+    await Chrome.storage.sync.set({
+      [url]: {
+        alternates: undeletedAlternates,
       },
     });
   };
@@ -41,10 +53,19 @@ function App({ url }: AppProps) {
       <CssVarsProvider defaultMode="system">
         <Sheet sx={{ height: "100vh", width: "100vw" }}>
           <Stack justifyContent={"center"} alignItems={"center"}>
-            <Typography level={"body-lg"}>
+            <Typography level={"body-lg"} fontWeight="bold">
               You're trying to go to {hostname}.
             </Typography>
-            <Alternates alternates={alternates} onAdd={onAddAlternate} />
+
+            <Typography level={"body-lg"} fontWeight={"bold"}>
+              Try going somewhere else...
+            </Typography>
+
+            <Alternates
+              alternates={alternates}
+              onAdd={onAddAlternate}
+              onDelete={onDeleteAlternates}
+            />
           </Stack>
         </Sheet>
       </CssVarsProvider>

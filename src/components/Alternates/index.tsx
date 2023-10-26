@@ -1,18 +1,19 @@
-import { Typography } from "@mui/joy";
 import AlternatesForm from "./AlternatesForm";
 import AlternatesList from "./AlternatesList";
 
 type AlternatesProps = {
   alternates: string[];
   onAdd: (alternate: string) => void;
+  onDelete: (alternates: string[]) => void;
 };
 
-function Alternates({ alternates, onAdd }: AlternatesProps) {
+function Alternates({ alternates, onAdd, onDelete }: AlternatesProps) {
   return (
     <>
-      <Typography level={"body-lg"}>Try going somewhere else...</Typography>
       <AlternatesForm alternates={alternates} onAdd={onAdd} />
-      <AlternatesList alternates={alternates} />
+      {alternates.length > 0 && (
+        <AlternatesList alternates={alternates} onConfirmDelete={onDelete} />
+      )}
     </>
   );
 }

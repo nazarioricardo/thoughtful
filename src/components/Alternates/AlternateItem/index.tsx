@@ -1,20 +1,31 @@
-import { Box, Divider, Grid, IconButton, Link, Sheet } from "@mui/joy";
+import { Grid, IconButton, Link, Sheet } from "@mui/joy";
 import { getHostName } from "../../../constants";
 import { Delete } from "@mui/icons-material";
 
 type AlternateItemProps = {
   alternate: string;
   isEditing: boolean;
+  onMarkForDelete: (alternate: string) => void;
+  isDeleting: boolean;
 };
 
-function AlternateItem({ alternate, isEditing }: AlternateItemProps) {
+function AlternateItem({
+  alternate,
+  isEditing,
+  onMarkForDelete,
+  isDeleting,
+}: AlternateItemProps) {
+  const handleMarkForDelete = () => {
+    onMarkForDelete(alternate);
+  };
+
   return (
     <Sheet
       sx={{
         width: "100%",
         height: 36,
       }}
-      variant={isEditing ? "soft" : "plain"}
+      variant={isDeleting ? "soft" : "plain"}
     >
       <Grid
         container
@@ -34,7 +45,7 @@ function AlternateItem({ alternate, isEditing }: AlternateItemProps) {
         </Grid>
         {isEditing && (
           <Grid position={"absolute"} right={0}>
-            <IconButton sx={{ borderRadius: 0 }}>
+            <IconButton sx={{ borderRadius: 0 }} onClick={handleMarkForDelete}>
               <Delete />
             </IconButton>
           </Grid>
