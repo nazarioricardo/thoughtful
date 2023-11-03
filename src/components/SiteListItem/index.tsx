@@ -1,4 +1,4 @@
-import Chrome from "webextension-polyfill";
+import Browser from "webextension-polyfill";
 import { Delete, Http, OpenInNew } from "@mui/icons-material";
 import {
   ListItem,
@@ -29,7 +29,7 @@ function SiteListItem({
       return;
     }
 
-    Chrome.tabs.update({
+    Browser.tabs.update({
       url,
     });
   };

@@ -1,4 +1,4 @@
-import Chrome from "webextension-polyfill";
+import Browser from "webextension-polyfill";
 import { FormEvent, useEffect, useState } from "react";
 import {
   URL_OR_HOST_REGEX,
@@ -38,13 +38,12 @@ function Popup() {
   const [text, setText] = useState<string>("");
 
   const addUrl = async (url: string, id: number) => {
-    await Chrome.declarativeNetRequest.updateDynamicRules({
+    await Browser.declarativeNetRequest.updateDynamicRules({
       addRules: [
         {
           id: id,
           priority: 1,
           action: {
-            // type: "redirect",
             type: chrome.declarativeNetRequest.RuleActionType.REDIRECT,
             redirect: {
               extensionPath: "/index.html/?url=" + url,
@@ -52,7 +51,6 @@ function Popup() {
           },
           condition: {
             urlFilter: url,
-            // resourceTypes: ["main_frame"],
             resourceTypes: [
               chrome.declarativeNetRequest.ResourceType.MAIN_FRAME,
             ],
@@ -61,15 +59,15 @@ function Popup() {
       ],
     });
 
-    await Chrome.storage.sync.set({
+    await Browser.storage.sync.set({
       [url]: {
-        bypass: false,
+        isBypassed: false,
         alternates: [],
         id: id,
       },
     });
 
-    const newStorage = await Chrome.storage.sync.get();
+    const newStorage = await Browser.storage.sync.get();
     setStorage(newStorage as Storage);
     setSites([...sites, url]);
   };
@@ -110,24 +108,24 @@ function Popup() {
       return;
     }
 
-    const sitesInStorage = await Chrome.storage.sync.get(sites);
+    const sitesInStorage = await Browser.storage.sync.get(sites);
     const ids = Object.keys(sitesInStorage).map((s) => storage[s].id);
-    await Chrome.storage.sync.remove(sites);
-    await Chrome.declarativeNetRequest.updateDynamicRules({
+    await Browser.storage.sync.remove(sites);
+    await Browser.declarativeNetRequest.updateDynamicRules({
       removeRuleIds: ids,
     });
-    const newStorage = await Chrome.storage.sync.get();
+    const newStorage = await Browser.storage.sync.get();
     setStorage(newStorage as Storage);
     setSites(Object.keys(newStorage));
   };
 
   useEffect(() => {
-    Chrome.storage.sync.get().then((newStorage) => {
+    Browser.storage.sync.get().then((newStorage) => {
       setSites(Object.keys(newStorage));
       setStorage(newStorage as Storage);
     });
 
-    console.log(Chrome.extension.getViews());
+    console.log(Browser.extension.getViews());
   }, []);
 
   return (

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import Chrome from "webextension-polyfill";
+import Browser from "webextension-polyfill";
 import { Button, CssVarsProvider, Sheet, Stack, Typography } from "@mui/joy";
 import Alternates from "./components/Alternates";
 import { getHostName } from "./constants";
@@ -22,7 +22,7 @@ function App({ url }: AppProps) {
     const newAlternates = [...oldAlternates, alternate];
 
     setAlternates(newAlternates);
-    await Chrome.storage.sync.set({
+    await Browser.storage.sync.set({
       [url]: {
         alternates: newAlternates,
       },
@@ -35,7 +35,7 @@ function App({ url }: AppProps) {
     );
 
     setAlternates(undeletedAlternates);
-    await Chrome.storage.sync.set({
+    await Browser.storage.sync.set({
       [url]: {
         alternates: undeletedAlternates,
       },
@@ -47,7 +47,7 @@ function App({ url }: AppProps) {
   };
 
   useEffect(() => {
-    Chrome.storage.sync.get([url]).then((result) => {
+    Browser.storage.sync.get([url]).then((result) => {
       if (result[url]) {
         setAlternates(result[url].alternates);
       }
@@ -70,7 +70,7 @@ function App({ url }: AppProps) {
             <Button onClick={onOverride}>Nope! I wanna go to {hostname}</Button>
 
             {isOverriding ? (
-              <Override />
+              <Override url={url} hostname={hostname} />
             ) : (
               <Alternates
                 alternates={alternates}

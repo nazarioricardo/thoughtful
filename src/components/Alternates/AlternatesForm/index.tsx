@@ -54,7 +54,7 @@ function AlternatesForm({ alternates, onAdd }: AlternatesFormProps) {
     event.preventDefault();
     try {
       const url = addUrl();
-      window.location.replace(url);
+      window.location.href = url;
     } catch (err) {
       if (err instanceof Error) {
         setError(err);

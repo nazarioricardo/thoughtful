@@ -1,10 +1,47 @@
+import Browser from "webextension-polyfill";
 import { ArrowRight } from "@mui/icons-material";
-import { Button, FormControl, FormLabel, Input, Textarea } from "@mui/joy";
-import { useState } from "react";
+import { Button, FormControl, FormLabel, Textarea } from "@mui/joy";
+import { FormEvent, useState } from "react";
 
-function Override() {
+type OverrideProps = {
+  url: string;
+  hostname: string;
+};
+
+function Override({ url, hostname }: OverrideProps) {
   const [text, setText] = useState<string>();
-  const onSubmitForm = () => {};
+
+  const onSubmitForm = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const response = await Browser.storage.sync.get([url]);
+    const hostFilter = response[url];
+    console.log("hostFilter", url, JSON.stringify(hostFilter), hostFilter.id);
+
+    await Browser.declarativeNetRequest.updateDynamicRules({
+      removeRuleIds: [hostFilter.id],
+      addRules: [
+        {
+          id: hostFilter.id,
+          priority: 1,
+          action: { type: chrome.declarativeNetRequest.RuleActionType.ALLOW },
+          condition: {
+            urlFilter: url,
+            resourceTypes: [
+              chrome.declarativeNetRequest.ResourceType.MAIN_FRAME,
+            ],
+          },
+        },
+      ],
+    });
+
+    await Browser.storage.sync.set({
+      [url]: {
+        ...hostFilter,
+        isBypassed: true,
+      },
+    });
+  };
+
   return (
     <form onSubmit={onSubmitForm} style={{ width: 600 }}>
       <FormControl>
@@ -21,7 +58,7 @@ function Override() {
           required
         />
         <Button variant="solid" type="submit" endDecorator={<ArrowRight />}>
-          Submit and Go
+          Submit and Go To {hostname}
         </Button>
       </FormControl>
     </form>
