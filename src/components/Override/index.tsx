@@ -1,6 +1,6 @@
 import Browser from "webextension-polyfill";
 import { ArrowRight } from "@mui/icons-material";
-import { Button, FormControl, FormLabel, Textarea } from "@mui/joy";
+import { Button, FormControl, FormLabel, Input } from "@mui/joy";
 import { FormEvent, useState } from "react";
 
 type OverrideProps = {
@@ -9,13 +9,12 @@ type OverrideProps = {
 };
 
 function Override({ url, hostname }: OverrideProps) {
-  const [text, setText] = useState<string>();
+  const [message, setMessage] = useState<string>();
 
   const onSubmitForm = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const response = await Browser.storage.sync.get([url]);
     const hostFilter = response[url];
-    console.log("hostFilter", url, JSON.stringify(hostFilter), hostFilter.id);
 
     await Browser.declarativeNetRequest.updateDynamicRules({
       removeRuleIds: [hostFilter.id],
@@ -38,6 +37,7 @@ function Override({ url, hostname }: OverrideProps) {
       [url]: {
         ...hostFilter,
         isBypassed: true,
+        message,
       },
     });
   };
@@ -46,11 +46,10 @@ function Override({ url, hostname }: OverrideProps) {
     <form onSubmit={onSubmitForm} style={{ width: 600 }}>
       <FormControl>
         <FormLabel>Why?</FormLabel>
-        <Textarea
-          minRows={1}
-          value={text}
+        <Input
+          value={message}
           onChange={(event) => {
-            setText(event.target.value);
+            setMessage(event.target.value);
           }}
           name="reason"
           placeholder="Set your intention here..."

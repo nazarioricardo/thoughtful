@@ -67,6 +67,23 @@ function Popup() {
       },
     });
 
+    console.log(url);
+    try {
+      // Browser.scripting.updateContentScripts;
+      await Browser.scripting.registerContentScripts([
+        {
+          id: url + "-script",
+          js: ["static/js/content.js"],
+          persistAcrossSessions: false,
+          matches: [url + "/*"],
+          runAt: "document_end",
+          allFrames: true,
+        },
+      ]);
+    } catch (error) {
+      console.log(error);
+    }
+
     const newStorage = await Browser.storage.sync.get();
     setStorage(newStorage as Storage);
     setSites([...sites, url]);
