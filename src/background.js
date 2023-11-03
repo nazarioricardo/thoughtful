@@ -1,5 +1,4 @@
 import Browser from "webextension-polyfill";
-import "@types/chrome";
 
 const clearRules = async () => {
   /**
@@ -42,16 +41,14 @@ const resetRules = async () => {
           id: data.id,
           priority: 1,
           action: {
-            type: chrome.declarativeNetRequest.RuleActionType.REDIRECT,
+            type: "redirect",
             redirect: {
               extensionPath: "/index.html/?url=" + url,
             },
           },
           condition: {
             urlFilter: url,
-            resourceTypes: [
-              chrome.declarativeNetRequest.ResourceType.MAIN_FRAME,
-            ],
+            resourceTypes: ["main_frame"],
           },
         },
       ],
