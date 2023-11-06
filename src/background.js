@@ -1,4 +1,5 @@
 import Browser from "webextension-polyfill";
+import { blockWebsite } from "./utils";
 
 const clearRules = async () => {
   /**
@@ -15,12 +16,26 @@ const clearRules = async () => {
 };
 
 Browser.runtime.onInstalled.addListener(async () => {
-  console.log("INSTALLED");
   clearRules();
   // chrome.action.setBadgeText({
   //   text: "Off",
   // });
 });
+
+Browser.runtime.onMessage.addListener(
+  async ({ type, options }, sender, sendResponse) => {
+    if (type == "block") {
+      console.log("BLOCKING", options);
+      const {
+        url,
+        data: { id, alternates },
+      } = options;
+      await blockWebsite(url, id, alternates);
+      const indexUrl = Browser.runtime.getURL("index.html");
+      Browser.tabs.update(sender.tab.id, { url: indexUrl + "?url=" + url });
+    }
+  }
+);
 
 const resetRules = async () => {
   const store = await Browser.storage.sync.get();

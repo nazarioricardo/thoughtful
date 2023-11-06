@@ -17,6 +17,7 @@ import {
   Sheet,
 } from "@mui/joy";
 import { Add, InfoOutlined } from "@mui/icons-material";
+import { blockWebsite, registerContentScript } from "./utils";
 
 const smallestPositiveInteger = (ids: number[]) => {
   const pos = ids.filter((num) => num >= 1).sort((a, b) => a - b);
@@ -38,52 +39,13 @@ function Popup() {
   const [text, setText] = useState<string>("");
 
   const addUrl = async (url: string, id: number) => {
-    await Browser.declarativeNetRequest.updateDynamicRules({
-      addRules: [
-        {
-          id: id,
-          priority: 1,
-          action: {
-            type: chrome.declarativeNetRequest.RuleActionType.REDIRECT,
-            redirect: {
-              extensionPath: "/index.html/?url=" + url,
-            },
-          },
-          condition: {
-            urlFilter: url,
-            resourceTypes: [
-              chrome.declarativeNetRequest.ResourceType.MAIN_FRAME,
-            ],
-          },
-        },
-      ],
-    });
-
-    await Browser.storage.sync.set({
-      [url]: {
-        isBypassed: false,
-        alternates: [],
-        id: id,
-      },
-    });
-
-    console.log(url);
     try {
-      // Browser.scripting.updateContentScripts;
-      await Browser.scripting.registerContentScripts([
-        {
-          id: url + "-script",
-          js: ["static/js/content.js"],
-          persistAcrossSessions: true,
-          matches: [url + "/*"],
-          runAt: "document_end",
-          allFrames: true,
-        },
-      ]);
+      registerContentScript(url);
     } catch (error) {
-      console.log(error);
+      throw error;
     }
 
+    await blockWebsite(url, id);
     const newStorage = await Browser.storage.sync.get();
     setStorage(newStorage as Storage);
     setSites([...sites, url]);
@@ -103,7 +65,12 @@ function Popup() {
       if (!url.includes("wwww.")) {
         url = "www." + url;
       }
+
       url = PROTOCOL + url;
+
+      if (!url.endsWith("/")) {
+        url += "/";
+      }
     }
 
     const nextId = getNextId();
@@ -134,6 +101,7 @@ function Popup() {
     await Browser.declarativeNetRequest.updateDynamicRules({
       removeRuleIds: ids,
     });
+
     const newStorage = await Browser.storage.sync.get();
     setStorage(newStorage as Storage);
     setSites(Object.keys(newStorage));

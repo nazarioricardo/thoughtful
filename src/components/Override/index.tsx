@@ -2,6 +2,7 @@ import Browser from "webextension-polyfill";
 import { ArrowRight } from "@mui/icons-material";
 import { Button, FormControl, FormLabel, Input } from "@mui/joy";
 import { FormEvent, useState } from "react";
+import { unblockWebsite } from "../../utils";
 
 type OverrideProps = {
   url: string;
@@ -10,36 +11,15 @@ type OverrideProps = {
 
 function Override({ url, hostname }: OverrideProps) {
   const [message, setMessage] = useState<string>();
-
+  const [error, setError] = useState<Error | undefined>();
   const onSubmitForm = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const response = await Browser.storage.sync.get([url]);
-    const hostFilter = response[url];
+    if (!message) {
+      setError(new Error("Please input a valid reason."));
+      return;
+    }
 
-    await Browser.declarativeNetRequest.updateDynamicRules({
-      removeRuleIds: [hostFilter.id],
-      addRules: [
-        {
-          id: hostFilter.id,
-          priority: 1,
-          action: { type: chrome.declarativeNetRequest.RuleActionType.ALLOW },
-          condition: {
-            urlFilter: url,
-            resourceTypes: [
-              chrome.declarativeNetRequest.ResourceType.MAIN_FRAME,
-            ],
-          },
-        },
-      ],
-    });
-
-    await Browser.storage.sync.set({
-      [url]: {
-        ...hostFilter,
-        isBypassed: true,
-        message,
-      },
-    });
+    await unblockWebsite(url, message);
   };
 
   return (
