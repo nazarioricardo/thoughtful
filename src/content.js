@@ -8,9 +8,7 @@ if (typeof init === "undefined") {
       return;
     }
 
-    console.log("GETTING", url);
     const store = await Browser.storage.sync.get([url]);
-    console.log("GOT", JSON.stringify(store));
 
     const hostEle = document.createElement("div");
     hostEle.className = "thoughtful-element-host";

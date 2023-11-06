@@ -22,20 +22,17 @@ Browser.runtime.onInstalled.addListener(async () => {
   // });
 });
 
-Browser.runtime.onMessage.addListener(
-  async ({ type, options }, sender, sendResponse) => {
-    if (type == "block") {
-      console.log("BLOCKING", options);
-      const {
-        url,
-        data: { id, alternates },
-      } = options;
-      await blockWebsite(url, id, alternates);
-      const indexUrl = Browser.runtime.getURL("index.html");
-      Browser.tabs.update(sender.tab.id, { url: indexUrl + "?url=" + url });
-    }
+Browser.runtime.onMessage.addListener(async ({ type, options }, sender) => {
+  if (type == "block") {
+    const {
+      url,
+      data: { id, alternates },
+    } = options;
+    await blockWebsite(url, id, alternates);
+    const indexUrl = Browser.runtime.getURL("index.html");
+    Browser.tabs.update(sender.tab.id, { url: indexUrl + "?url=" + url });
   }
-);
+});
 
 const resetRules = async () => {
   const store = await Browser.storage.sync.get();
