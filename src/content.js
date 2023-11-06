@@ -5,7 +5,6 @@ if (typeof init === "undefined") {
       return;
     }
 
-    console.log("this is init", document.location.href);
     const hostEle = document.createElement("div");
     hostEle.className = "rustyZone-element-host";
     hostEle.innerHTML = "Hello From the Rusty Zone Element";

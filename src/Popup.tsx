@@ -74,7 +74,7 @@ function Popup() {
         {
           id: url + "-script",
           js: ["static/js/content.js"],
-          persistAcrossSessions: false,
+          persistAcrossSessions: true,
           matches: [url + "/*"],
           runAt: "document_end",
           allFrames: true,
@@ -100,6 +100,9 @@ function Popup() {
     let url = text;
     const isMissingProtocol = !HTTPS_REGEX.test(url) && !HTTP_REGEX.test(url);
     if (isMissingProtocol) {
+      if (!url.includes("wwww.")) {
+        url = "www." + url;
+      }
       url = PROTOCOL + url;
     }
 
