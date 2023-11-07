@@ -1,4 +1,4 @@
-import { Button, Divider, Grid, List, Stack } from "@mui/joy";
+import { Button, Grid, List, Stack } from "@mui/joy";
 import SiteListItem from "../SiteListItem";
 import { useState } from "react";
 import { Cancel, Check, Edit } from "@mui/icons-material";
@@ -11,29 +11,29 @@ type SiteListProps = {
 
 function SiteList({ sites, storage, onDelete }: SiteListProps) {
   const [isEditing, setIsEditing] = useState<boolean>(false);
-  const [toDelete, setToDelete] = useState<string[]>([]);
+  const [forDeletion, setForDeletion] = useState<string[]>([]);
 
   const toggleEditing = () => {
-    setToDelete([]);
+    setForDeletion([]);
     setIsEditing(!isEditing);
   };
 
   const markToDelete = (url: string) => {
-    if (toDelete.includes(url)) {
-      const filtered = toDelete.filter((s) => s !== url);
-      setToDelete(filtered);
+    if (forDeletion.includes(url)) {
+      const filtered = forDeletion.filter((s) => s !== url);
+      setForDeletion(filtered);
       return;
     }
 
-    setToDelete([...toDelete, url]);
+    setForDeletion([...forDeletion, url]);
   };
 
   const onConfirmDeletion = () => {
-    onDelete(toDelete);
+    onDelete(forDeletion);
     setIsEditing(false);
   };
 
-  console.log(toDelete);
+  console.log(forDeletion);
 
   return (
     <Stack direction="column" justifyContent="flex-start" alignItems="stretch">
@@ -46,7 +46,7 @@ function SiteList({ sites, storage, onDelete }: SiteListProps) {
             isBypassed={storage[site].bypass}
             alternates={storage[site].alternates}
             isEditing={isEditing}
-            isDeleting={toDelete.includes(site)}
+            isDeleting={forDeletion.includes(site)}
           />
         ))}
       </List>

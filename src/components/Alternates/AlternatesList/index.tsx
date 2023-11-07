@@ -1,7 +1,7 @@
+import { useState } from "react";
 import { Divider, Grid, IconButton, Stack } from "@mui/joy";
 import AlternateItem from "../AlternateItem";
 import { Cancel, Check, Edit } from "@mui/icons-material";
-import { useState } from "react";
 
 type AlternatesListProps = {
   alternates: string[];
@@ -13,6 +13,7 @@ function AlternatesList({ alternates, onConfirmDelete }: AlternatesListProps) {
   const [forDeletion, setForDeletion] = useState<string[]>([]);
 
   const toggleEdit = () => {
+    setForDeletion([]);
     setIsEditing(!isEditing);
   };
 
