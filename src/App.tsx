@@ -74,7 +74,7 @@ function App({ url }: AppProps) {
               {isOverriding ? (
                 <>
                   <Typography level={"body-lg"} fontWeight={"bold"}>
-                    What do you need to do at {hostname}?
+                    Why?
                   </Typography>
                 </>
               ) : (

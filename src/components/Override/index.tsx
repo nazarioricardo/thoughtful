@@ -35,7 +35,7 @@ function Override({ url, hostname }: OverrideProps) {
           variant="soft"
           required
           sx={{
-            paddingBottom: "24px",
+            marginBottom: "24px",
           }}
         />
         <Button variant="solid" type="submit" endDecorator={<ArrowRight />}>
