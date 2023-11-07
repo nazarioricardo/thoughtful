@@ -17,9 +17,6 @@ const clearRules = async () => {
 
 Browser.runtime.onInstalled.addListener(async () => {
   clearRules();
-  // chrome.action.setBadgeText({
-  //   text: "Off",
-  // });
 });
 
 Browser.runtime.onMessage.addListener(async ({ type, options }, sender) => {
