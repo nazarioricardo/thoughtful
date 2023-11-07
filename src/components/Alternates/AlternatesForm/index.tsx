@@ -78,7 +78,7 @@ function AlternatesForm({ alternates, onAdd }: AlternatesFormProps) {
     <form ref={formRef} onSubmit={onSubmitForm}>
       <FormControl>
         <Input
-          sx={{ "--Input-decoratorChildHeight": "45px", marginBottom: 24 }}
+          sx={{ "--Input-decoratorChildHeight": "45px", marginBottom: "24px" }}
           value={text}
           onChange={(event) => {
             setError(undefined);
