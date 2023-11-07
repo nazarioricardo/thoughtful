@@ -1,6 +1,13 @@
 import { useEffect, useState } from "react";
 import Browser from "webextension-polyfill";
-import { Button, CssVarsProvider, Sheet, Stack, Typography } from "@mui/joy";
+import {
+  Box,
+  Button,
+  CssVarsProvider,
+  Sheet,
+  Stack,
+  Typography,
+} from "@mui/joy";
 import Alternates from "./components/Alternates";
 import { getHostName } from "./constants";
 import Override from "./components/Override";
@@ -58,17 +65,19 @@ function App({ url }: AppProps) {
     <main>
       <CssVarsProvider defaultMode="system">
         <Sheet sx={{ height: "100vh", width: "100vw" }}>
-          <Stack justifyContent={"center"} alignItems={"center"}>
-            <Typography level={"body-lg"} fontWeight="bold">
-              You're trying to go to {hostname}.
-            </Typography>
-
-            <Typography level={"body-lg"} fontWeight={"bold"}>
-              Try going somewhere else...
-            </Typography>
-
-            <Button onClick={onOverride}>Nope! I wanna go to {hostname}</Button>
-
+          <Stack
+            justifyContent={"center"}
+            alignItems={"center"}
+            sx={{ height: "100vh", justifyContent: "space-evenly" }}
+          >
+            <Box>
+              <Typography level={"body-lg"} fontWeight="bold">
+                You're trying to go to {hostname}.
+              </Typography>
+              <Typography level={"body-lg"} fontWeight={"bold"}>
+                Try going somewhere else...
+              </Typography>
+            </Box>
             {isOverriding ? (
               <Override url={url} hostname={hostname} />
             ) : (
@@ -78,6 +87,8 @@ function App({ url }: AppProps) {
                 onDelete={onDeleteAlternates}
               />
             )}
+
+            <Button onClick={onOverride}>Nope! I wanna go to {hostname}</Button>
           </Stack>
         </Sheet>
       </CssVarsProvider>

@@ -7,6 +7,7 @@ import {
   PROTOCOL,
 } from "./../../../constants";
 import { FormEvent, useRef, useState } from "react";
+import { createUrl } from "../../../utils";
 
 type AlternatesFormProps = {
   alternates: string[];
@@ -25,12 +26,7 @@ function AlternatesForm({ alternates, onAdd }: AlternatesFormProps) {
       throw error;
     }
 
-    let url = text;
-    const isMissingProtocol = !HTTPS_REGEX.test(url) && !HTTP_REGEX.test(url);
-    if (isMissingProtocol) {
-      url = PROTOCOL + url;
-    }
-
+    const url = createUrl(text);
     return url;
   };
 

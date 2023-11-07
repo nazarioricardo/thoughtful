@@ -37,7 +37,7 @@ function Override({ url, hostname }: OverrideProps) {
           required
         />
         <Button variant="solid" type="submit" endDecorator={<ArrowRight />}>
-          Submit and Go To {hostname}
+          Submit and go to {hostname}
         </Button>
       </FormControl>
     </form>

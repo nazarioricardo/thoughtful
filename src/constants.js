@@ -3,4 +3,9 @@ export const URL_OR_HOST_REGEX =
 export const HTTPS_REGEX = /^https:\/\//i;
 export const HTTP_REGEX = /^http:\/\//i;
 export const PROTOCOL = "https://";
-export const getHostName = (url) => url.replace(/(^\w+:|^)\/\//, "");
+export const getHostName = (url) => {
+  return url
+    .replace(/(^\w+:|^)\/\//, "")
+    .split("/")[0]
+    .split("www.")[1];
+};

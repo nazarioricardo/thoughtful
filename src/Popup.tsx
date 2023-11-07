@@ -17,7 +17,7 @@ import {
   Sheet,
 } from "@mui/joy";
 import { Add, InfoOutlined } from "@mui/icons-material";
-import { blockWebsite, registerContentScript } from "./utils";
+import { blockWebsite, createUrl, registerContentScript } from "./utils";
 
 const smallestPositiveInteger = (ids: number[]) => {
   const pos = ids.filter((num) => num >= 1).sort((a, b) => a - b);
@@ -59,20 +59,7 @@ function Popup() {
       return;
     }
 
-    let url = text;
-    const isMissingProtocol = !HTTPS_REGEX.test(url) && !HTTP_REGEX.test(url);
-    if (isMissingProtocol) {
-      if (!url.includes("wwww.")) {
-        url = "www." + url;
-      }
-
-      url = PROTOCOL + url;
-
-      if (!url.endsWith("/")) {
-        url += "/";
-      }
-    }
-
+    const url = createUrl(text);
     const nextId = getNextId();
     await addUrl(url, nextId);
     setText("");

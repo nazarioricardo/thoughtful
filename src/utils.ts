@@ -1,5 +1,5 @@
 import Browser from "webextension-polyfill";
-
+import { HTTP_REGEX, HTTPS_REGEX, PROTOCOL } from "./constants";
 export type StorageData = {
   id: number;
   message: string;
@@ -106,4 +106,22 @@ export const registerContentScript = async (url: string) => {
     console.error(error);
     throw error;
   }
+};
+
+export const createUrl = (text: string) => {
+  let url = text;
+  const isMissingProtocol = !HTTPS_REGEX.test(url) && !HTTP_REGEX.test(url);
+  if (isMissingProtocol) {
+    if (!url.includes("wwww.")) {
+      url = "www." + url;
+    }
+
+    url = PROTOCOL + url;
+
+    if (!url.endsWith("/")) {
+      url += "/";
+    }
+  }
+
+  return url;
 };
