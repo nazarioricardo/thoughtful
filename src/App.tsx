@@ -71,12 +71,22 @@ function App({ url }: AppProps) {
             sx={{ height: "100vh", justifyContent: "space-evenly" }}
           >
             <Box>
-              <Typography level={"body-lg"} fontWeight="bold">
-                You're trying to go to {hostname}.
-              </Typography>
-              <Typography level={"body-lg"} fontWeight={"bold"}>
-                Try going somewhere else...
-              </Typography>
+              {isOverriding ? (
+                <>
+                  <Typography level={"body-lg"} fontWeight={"bold"}>
+                    What do you need to do at {hostname}?
+                  </Typography>
+                </>
+              ) : (
+                <>
+                  <Typography level={"body-lg"} fontWeight="bold">
+                    You're trying to go to {hostname}.
+                  </Typography>
+                  <Typography level={"body-lg"} fontWeight={"bold"}>
+                    Try going somewhere else...
+                  </Typography>
+                </>
+              )}
             </Box>
             {isOverriding ? (
               <Override url={url} hostname={hostname} />
@@ -88,7 +98,24 @@ function App({ url }: AppProps) {
               />
             )}
 
-            <Button onClick={onOverride}>Nope! I wanna go to {hostname}</Button>
+            {isOverriding ? (
+              <Button
+                onClick={() => setIsOverriding(false)}
+                size="lg"
+                color="neutral"
+              >
+                Nevermind... it's not important
+              </Button>
+            ) : (
+              <Button
+                onClick={onOverride}
+                size="lg"
+                variant="plain"
+                color="danger"
+              >
+                Nope! I wanna go to {hostname}
+              </Button>
+            )}
           </Stack>
         </Sheet>
       </CssVarsProvider>

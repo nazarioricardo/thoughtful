@@ -23,9 +23,8 @@ function Override({ url, hostname }: OverrideProps) {
   };
 
   return (
-    <form onSubmit={onSubmitForm} style={{ width: 600 }}>
+    <form onSubmit={onSubmitForm} style={{ maxWidth: "600px", width: "90vw" }}>
       <FormControl>
-        <FormLabel>Why?</FormLabel>
         <Input
           value={message}
           onChange={(event) => {
@@ -35,6 +34,9 @@ function Override({ url, hostname }: OverrideProps) {
           placeholder="Set your intention here..."
           variant="soft"
           required
+          sx={{
+            paddingBottom: "24px",
+          }}
         />
         <Button variant="solid" type="submit" endDecorator={<ArrowRight />}>
           Submit and go to {hostname}
