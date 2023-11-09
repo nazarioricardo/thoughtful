@@ -1,11 +1,6 @@
 import Browser from "webextension-polyfill";
 import { FormEvent, useEffect, useState } from "react";
-import {
-  URL_OR_HOST_REGEX,
-  HTTPS_REGEX,
-  HTTP_REGEX,
-  PROTOCOL,
-} from "./constants";
+import { URL_OR_HOST_REGEX } from "./constants";
 import SiteList from "./components/SiteList";
 import {
   CssVarsProvider,
