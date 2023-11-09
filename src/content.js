@@ -42,7 +42,7 @@ function Main() {
           position: "fixed",
           top: 24,
           right: 24,
-          zIndex: 9999999999999999999999,
+          zIndex: 10000,
           width: "34vh",
           maxWidth: "400px",
           boxShadow: "black 4px 2px 20px 0px",

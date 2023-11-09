@@ -29,8 +29,11 @@ function App({ url }: AppProps) {
     const newAlternates = [...oldAlternates, alternate];
 
     setAlternates(newAlternates);
+    const store = await Browser.storage.sync.get([url]);
+    const data = store[url];
     await Browser.storage.sync.set({
       [url]: {
+        ...data,
         alternates: newAlternates,
       },
     });

@@ -66,6 +66,5 @@ const resetRules = async () => {
 };
 
 Browser.runtime.onStartup.addListener(async () => {
-  console.log("STARTUP");
   await resetRules();
 });

@@ -12,7 +12,12 @@ import {
   Sheet,
 } from "@mui/joy";
 import { Add, InfoOutlined } from "@mui/icons-material";
-import { blockWebsite, createUrl, registerContentScript } from "./utils";
+import {
+  blockWebsite,
+  createUrl,
+  registerContentScript,
+  removeContentScripts,
+} from "./utils";
 
 const smallestPositiveInteger = (ids: number[]) => {
   const pos = ids.filter((num) => num >= 1).sort((a, b) => a - b);
@@ -83,6 +88,7 @@ function Popup() {
     await Browser.declarativeNetRequest.updateDynamicRules({
       removeRuleIds: ids,
     });
+    await removeContentScripts(sites);
 
     const newStorage = await Browser.storage.sync.get();
     setStorage(newStorage as Storage);
@@ -94,8 +100,6 @@ function Popup() {
       setSites(Object.keys(newStorage));
       setStorage(newStorage as Storage);
     });
-
-    console.log(Browser.extension.getViews());
   }, []);
 
   return (

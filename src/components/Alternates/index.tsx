@@ -8,7 +8,6 @@ type AlternatesProps = {
 };
 
 function Alternates({ alternates, onAdd, onDelete }: AlternatesProps) {
-  console.log("Alternates", alternates);
   return (
     <>
       {alternates.length > 0 && (

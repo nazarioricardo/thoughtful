@@ -33,8 +33,6 @@ function SiteList({ sites, storage, onDelete }: SiteListProps) {
     setIsEditing(false);
   };
 
-  console.log(forDeletion);
-
   return (
     <Stack direction="column" justifyContent="flex-start" alignItems="stretch">
       <List>
