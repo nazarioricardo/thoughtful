@@ -15,12 +15,6 @@ type AppProps = {
   url: string;
 };
 
-// jim carry "Do Not Go In There!"
-// Jurassic Park "You didn't say the magic word!"
-// Larry David "How did I end up here?"
-
-// "I want to go to there" - 30 rock
-// Let's do all the things that YOU wanna do - Ace Ventura
 function App({ url }: AppProps) {
   const [isOverriding, setIsOverriding] = useState(false);
   const [alternates, setAlternates] = useState<string[]>([]);
