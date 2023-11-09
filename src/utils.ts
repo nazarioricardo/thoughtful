@@ -87,7 +87,7 @@ export const unblockWebsite = async (url: string, message: string) => {
     },
   });
 
-  addAllowRule(url, data.id);
+  await addAllowRule(url, data.id);
 };
 
 export const registerContentScript = async (url: string) => {

@@ -20,6 +20,7 @@ function Override({ url, hostname }: OverrideProps) {
     }
 
     await unblockWebsite(url, message);
+    document.location.href = url;
   };
 
   return (
