@@ -30,3 +30,5 @@ id: 1,
 priority: 1,
 }
 ```
+
+[Privacy Policy](https://www.freeprivacypolicy.com/live/ca398406-217d-45c1-be9f-60855cfd5313)
