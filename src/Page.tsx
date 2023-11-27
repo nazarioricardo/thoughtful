@@ -11,11 +11,11 @@ import {
 import Alternates from "./components/Alternates";
 import { getHostName } from "./constants";
 import Override from "./components/Override";
-type AppProps = {
+type PageProps = {
   url: string;
 };
 
-function App({ url }: AppProps) {
+function Page({ url }: PageProps) {
   const [isOverriding, setIsOverriding] = useState(false);
   const [alternates, setAlternates] = useState<string[]>([]);
   const hostname = getHostName(url);
@@ -122,4 +122,4 @@ function App({ url }: AppProps) {
   );
 }
 
-export default App;
+export default Page;
