@@ -15,8 +15,8 @@
     "webextension-polyfill": "^0.10.0"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "INLINE_RUNTIME_CHUNK=false react-app-rewired build",
+    "build": "webpack --config webpack.config.js",
+    "watch": "webpack -w --config webpack.config.js",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -44,8 +44,19 @@
     "@types/react": "^18.2.38",
     "@types/react-dom": "^18.2.17",
     "@types/webextension-polyfill": "^0.10.5",
+    "copy-webpack-plugin": "^11.0.0",
+    "css-loader": "^6.8.1",
     "customize-cra": "^1.0.0",
+    "html-webpack-plugin": "^5.5.3",
     "react-app-rewired": "^2.2.1",
-    "typescript": "^5.3.2"
-  }
+    "ts-loader": "^9.5.1",
+    "ts-node": "^10.9.1",
+    "typescript": "^4.0.0",
+    "webpack": "^5.89.0",
+    "webpack-cli": "^5.1.4"
+  },
+  "description": "## Manifest",
+  "main": "config-overrides.js",
+  "author": "",
+  "license": "ISC"
 }
