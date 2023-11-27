@@ -13,7 +13,7 @@ import {
 import { Check, DragIndicator } from "@mui/icons-material";
 import Draggable from "react-draggable";
 
-function Main() {
+function Content() {
   const [message, setMessage] = useState("");
   const url = document.location.href;
 
@@ -37,10 +37,6 @@ function Main() {
       },
     });
   };
-
-  if (url.indexOf("chrome-extension://") == 0) {
-    return;
-  }
 
   return (
     <CssVarsProvider defaultMode="dark">
@@ -112,7 +108,7 @@ hostElement.innerHTML = "thouthful shadow";
 document.body.appendChild(hostElement);
 
 //Using Shadow Root
-const host = document.querySelector(".extension-host");
+const host = document.querySelector(".extension-host")!;
 const root = host.attachShadow({ mode: "open" });
 const app = document.createElement("div");
 
@@ -120,4 +116,4 @@ app.id = "extension-root";
 
 app.appendChild(root);
 document.body.appendChild(app);
-ReactDOM.render(<Main />, app);
+ReactDOM.render(<Content />, app);

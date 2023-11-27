@@ -16,5 +16,5 @@
     "noEmit": true,
     "jsx": "react-jsx"
   },
-  "include": ["src", "src/content.js", "src/background.js"]
+  "include": ["src", "src/content.tsx", "src/background.js"]
 }

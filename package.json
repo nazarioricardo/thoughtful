@@ -47,6 +47,7 @@
     "copy-webpack-plugin": "^11.0.0",
     "css-loader": "^6.8.1",
     "customize-cra": "^1.0.0",
+    "esbuild-loader": "^4.0.2",
     "html-webpack-plugin": "^5.5.3",
     "react-app-rewired": "^2.2.1",
     "ts-loader": "^9.5.1",
