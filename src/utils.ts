@@ -96,7 +96,7 @@ export const registerContentScript = async (url: string) => {
     await Browser.scripting.registerContentScripts([
       {
         id: url + "-script",
-        js: ["static/js/content.js"],
+        js: ["js/content.js"],
         persistAcrossSessions: true,
         matches: [url + "/*"],
         runAt: "document_end",
