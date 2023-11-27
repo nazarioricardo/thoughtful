@@ -12,7 +12,12 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.tsx?$/,
+        test: /\.html$/,
+        loader: "html-loader",
+        exclude: /node_modules/,
+      },
+      {
+        test: /\.(ts|tsx)$/,
         use: [
           {
             loader: "ts-loader",
@@ -54,7 +59,7 @@ module.exports = {
     extensions: [".tsx", ".ts", ".js"],
   },
   output: {
-    path: path.join(__dirname, "dist/js"),
+    path: path.join(__dirname, "dist"),
     filename: "[name].js",
   },
 };
