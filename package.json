@@ -15,7 +15,9 @@
     "webextension-polyfill": "^0.10.0"
   },
   "scripts": {
-    "build": "webpack --config webpack.config.js",
+    "build": "npm run build:chrome & npm run build:firefox",
+    "build:chrome": "webpack --config webpack.config.chrome.js",
+    "build:firefox": "webpack --config webpack.config.firefox.js",
     "watch": "webpack -w --config webpack.config.js",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
