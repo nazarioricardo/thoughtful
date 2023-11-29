@@ -17,10 +17,5 @@
     "default_popup": "index.html"
   },
   "permissions": ["declarativeNetRequest", "storage", "scripting"],
-  "web_accessible_resources": [
-    {
-      "resources": ["content.html"],
-      "matches": ["<all_urls>"]
-    }
-  ]
+  "web_accessible_resources": ["content.html"]
 }
