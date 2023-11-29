@@ -2,7 +2,11 @@
   "manifest_version": 2,
   "name": "Thoughtful",
   "version": "1.0",
-
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "thoughtful@gneiss.dev"
+    }
+  },
   "description": "Adds a red border to all webpages matching mozilla.org.",
   "homepage_url": "https://github.com/nazarioricardo/thoughtful",
   "icons": {
