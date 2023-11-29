@@ -10,6 +10,7 @@ import {
   FormLabel,
   Input,
   Sheet,
+  Typography,
 } from "@mui/joy";
 import { Add, InfoOutlined } from "@mui/icons-material";
 import {
@@ -33,7 +34,8 @@ const smallestPositiveInteger = (ids: number[]) => {
 };
 
 function Popup() {
-  const [error, setError] = useState<Error | undefined>();
+  const [validationError, setValidationError] = useState<Error | undefined>();
+  const [storageError, setStorageError] = useState<Error | undefined>();
   const [storage, setStorage] = useState<Storage | undefined>();
   const [sites, setSites] = useState<string[]>([]);
   const [text, setText] = useState<string>("");
@@ -55,7 +57,7 @@ function Popup() {
     event.preventDefault();
     const isValidInput = URL_OR_HOST_REGEX.test(text);
     if (!isValidInput) {
-      setError(new Error("Please input a valid web address."));
+      setValidationError(new Error("Please input a valid web address."));
       return;
     }
 
@@ -96,23 +98,28 @@ function Popup() {
   };
 
   useEffect(() => {
-    Browser.storage.sync.get().then((newStorage) => {
-      setSites(Object.keys(newStorage));
-      setStorage(newStorage as Storage);
-    });
+    Browser.storage.sync
+      .get()
+      .then((newStorage) => {
+        setSites(Object.keys(newStorage));
+        setStorage(newStorage as Storage);
+      })
+      .catch((error) => {
+        setStorageError(error);
+      });
   }, []);
 
   return (
     <CssVarsProvider defaultMode="dark">
       <Sheet sx={{ padding: 2 }}>
-        <FormControl error={Boolean(error)}>
+        <FormControl error={Boolean(validationError)}>
           <FormLabel>Be Intentional</FormLabel>
           <form onSubmit={onSubmitForm}>
             <Input
               sx={{ "--Input-decoratorChildHeight": "45px" }}
               value={text}
               onChange={(event) => {
-                setError(undefined);
+                setValidationError(undefined);
                 setText(event.target.value);
               }}
               name="url"
@@ -134,10 +141,10 @@ function Popup() {
           </form>
 
           <FormHelperText sx={{ minHeight: 32, margin: 0 }}>
-            {error && (
+            {validationError && (
               <>
                 <InfoOutlined />
-                {error.message}
+                {validationError.message}
               </>
             )}
           </FormHelperText>
@@ -146,7 +153,10 @@ function Popup() {
         {storage && (
           <SiteList sites={sites} storage={storage} onDelete={onDelete} />
         )}
-        {!storage && <span>Loading...</span>}
+        {!storage && !storageError && <Typography>Loading...</Typography>}
+        {!storage && storageError && (
+          <Typography color="warning">Error: {storageError.message}</Typography>
+        )}
       </Sheet>
     </CssVarsProvider>
   );
