@@ -7,7 +7,7 @@
       "id": "thoughtful@gneiss.dev"
     }
   },
-  "description": "Adds a red border to all webpages matching mozilla.org.",
+  "description": "Save yourself from your own impulses to go down social media rabbit holes or endless doom-scrolling. Filter out websites while providing alternatives you'd rather go to, but give yourself some leeway if you need to go to these websites. ",
   "homepage_url": "https://github.com/nazarioricardo/thoughtful",
   "icons": {
     "16": "images/icon-16.png",
