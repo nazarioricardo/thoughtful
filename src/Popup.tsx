@@ -41,9 +41,11 @@ function Popup() {
   const [text, setText] = useState<string>("");
 
   const addUrl = async (url: string, id: number) => {
+    console.log("addUrl");
     try {
       registerContentScript(url);
     } catch (error) {
+      console.error(error);
       throw error;
     }
 
@@ -61,13 +63,26 @@ function Popup() {
       return;
     }
 
+    console.log("valid");
     const url = createUrl(text);
     const nextId = getNextId();
-    await addUrl(url, nextId);
-    setText("");
+
+    try {
+      await addUrl(url, nextId);
+      setText("");
+    } catch (error) {
+      if (error instanceof Error) {
+        setValidationError(error);
+      } else {
+        console.error(error);
+        setValidationError(new Error("Unknown Error"));
+        // chrome.declarativeNetRequest.RuleActionType is undefined
+      }
+    }
   };
 
   const getNextId = () => {
+    console.log("getNextId");
     if (!storage) {
       return 1;
     }

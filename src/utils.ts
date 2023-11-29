@@ -116,6 +116,7 @@ export const removeContentScripts = async (urls: string[]) => {
 };
 
 export const createUrl = (text: string) => {
+  console.log("createUrl");
   let url = text;
   const isMissingProtocol = !HTTPS_REGEX.test(url) && !HTTP_REGEX.test(url);
   if (isMissingProtocol) {
