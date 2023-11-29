@@ -34,14 +34,14 @@ const addRedirectRule = async (url: string, id: number) => {
         id: id,
         priority: 1,
         action: {
-          type: chrome.declarativeNetRequest.RuleActionType.REDIRECT,
+          type: "redirect",
           redirect: {
-            extensionPath: "/index.html/?url=" + url,
+            extensionPath: "/index.html?url=" + url,
           },
         },
         condition: {
           urlFilter: url,
-          resourceTypes: [chrome.declarativeNetRequest.ResourceType.MAIN_FRAME],
+          resourceTypes: ["main_frame"],
         },
       },
     ],
@@ -56,11 +56,11 @@ const addAllowRule = async (url: string, id: number) => {
         id,
         priority: 1,
         action: {
-          type: chrome.declarativeNetRequest.RuleActionType.ALLOW,
+          type: "allow",
         },
         condition: {
           urlFilter: url,
-          resourceTypes: [chrome.declarativeNetRequest.ResourceType.MAIN_FRAME],
+          resourceTypes: ["main_frame"],
         },
       },
     ],
@@ -87,7 +87,6 @@ export const unblockWebsite = async (url: string, message: string) => {
     },
   });
 
-  console.log("unblockWebsite", url, data);
   await addAllowRule(url, data.id);
 };
 
@@ -96,7 +95,7 @@ export const registerContentScript = async (url: string) => {
     await Browser.scripting.registerContentScripts([
       {
         id: url + "-script",
-        js: ["static/js/content.js"],
+        js: ["content.js"],
         persistAcrossSessions: true,
         matches: [url + "/*"],
         runAt: "document_end",

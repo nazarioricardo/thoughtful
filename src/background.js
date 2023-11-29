@@ -52,7 +52,7 @@ const resetRules = async () => {
           action: {
             type: "redirect",
             redirect: {
-              extensionPath: "/index.html/?url=" + url,
+              extensionPath: "/index.html?url=" + url,
             },
           },
           condition: {
