@@ -2,13 +2,6 @@
   "manifest_version": 2,
   "name": "Thoughtful",
   "version": "1.0",
-  "browser_specific_settings": {
-    "gecko": {
-      "id": "thoughtful@gneiss.dev"
-    }
-  },
-  "description": "Save yourself from your own impulses to go down social media rabbit holes or endless doom-scrolling. Filter out websites while providing alternatives you'd rather go to, but give yourself some leeway if you need to go to these websites. ",
-  "homepage_url": "https://github.com/nazarioricardo/thoughtful",
   "icons": {
     "16": "images/icon-16.png",
     "32": "images/icon-32.png",
@@ -20,6 +13,27 @@
     "default_title": "Thoughtful",
     "default_popup": "index.html"
   },
-  "permissions": ["declarativeNetRequest", "storage", "scripting"],
-  "web_accessible_resources": ["content.html"]
+  "background": {
+    "scripts": ["background.js"]
+  },
+  "permissions": [
+    "declarativeNetRequest",
+    "storage",
+    "scripting",
+    "<all_urls>"
+  ],
+  "web_accessible_resources": ["index.html"],
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"]
+    }
+  ],
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "thoughtful@gneiss.dev"
+    }
+  },
+  "description": "Save yourself from your own impulses to go down social media rabbit holes or endless doom-scrolling. Filter out websites while providing alternatives you'd rather go to, but give yourself some leeway if you need to go to these websites. ",
+  "homepage_url": "https://github.com/nazarioricardo/thoughtful"
 }
