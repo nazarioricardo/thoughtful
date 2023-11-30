@@ -34,14 +34,14 @@ const addRedirectRule = async (url: string, id: number) => {
         id: id,
         priority: 1,
         action: {
-          type: chrome.declarativeNetRequest.RuleActionType.REDIRECT,
+          type: "redirect",
           redirect: {
             extensionPath: "/index.html?url=" + url,
           },
         },
         condition: {
           urlFilter: url,
-          resourceTypes: [chrome.declarativeNetRequest.ResourceType.MAIN_FRAME],
+          resourceTypes: ["main_frame"],
         },
       },
     ],
@@ -56,11 +56,11 @@ const addAllowRule = async (url: string, id: number) => {
         id,
         priority: 1,
         action: {
-          type: chrome.declarativeNetRequest.RuleActionType.ALLOW,
+          type: "allow",
         },
         condition: {
           urlFilter: url,
-          resourceTypes: [chrome.declarativeNetRequest.ResourceType.MAIN_FRAME],
+          resourceTypes: ["main_frame"],
         },
       },
     ],
@@ -87,7 +87,6 @@ export const unblockWebsite = async (url: string, message: string) => {
     },
   });
 
-  console.log("unblockWebsite", url, data);
   await addAllowRule(url, data.id);
 };
 
@@ -116,7 +115,6 @@ export const removeContentScripts = async (urls: string[]) => {
 };
 
 export const createUrl = (text: string) => {
-  console.log("createUrl");
   let url = text;
   const isMissingProtocol = !HTTPS_REGEX.test(url) && !HTTP_REGEX.test(url);
   if (isMissingProtocol) {
