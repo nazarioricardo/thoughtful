@@ -13,6 +13,7 @@
 /dist
 /dist.chrome
 /dist.firefox
+/Thoughtful/Shared (Extension)/Resources
 
 # misc
 .DS_Store

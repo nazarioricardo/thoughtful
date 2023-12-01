@@ -37,5 +37,6 @@
       "matches": ["<all_urls>"]
     }
   ],
-  "description": "Save yourself from your own impulses"
+  "description": "Save yourself from your own impulses",
+  "homepage_url": "https://github.com/nazarioricardo/thoughtful"
 }

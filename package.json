@@ -15,9 +15,11 @@
     "webextension-polyfill": "^0.10.0"
   },
   "scripts": {
-    "build": "npm run build:chrome & npm run build:firefox",
+    "build": "npm run build:chrome & npm run build:firefox & npm run build:mac",
     "build:chrome": "webpack --config webpack.config.chrome.js",
     "build:firefox": "webpack --config webpack.config.firefox.js",
+    "build:mac": "webpack --config webpack.config.safari.js",
+    "uninstall:mac": "rm -rf ~/Library/Developer/Xcode/DerivedData",
     "watch": "webpack -w --config webpack.config.js",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

@@ -1,0 +1,10 @@
+{
+  "extension_name": {
+    "message": "Thoughtful",
+    "description": "The display name for the extension."
+  },
+  "extension_description": {
+    "message": "Save yourself from your own impulses",
+    "description": "Description of what the extension does."
+  }
+}
