@@ -29,12 +29,13 @@
   "background": {
     "service_worker": "background.js"
   },
-  "permissions": ["declarativeNetRequest", "storage", "scripting"],
+  "permissions": ["declarativeNetRequest", "storage", "scripting", "activeTab"],
   "host_permissions": ["<all_urls>"],
   "web_accessible_resources": [
     {
       "resources": ["index.html"],
       "matches": ["<all_urls>"]
     }
-  ]
+  ],
+  "description": "Save yourself from your own impulses"
 }
