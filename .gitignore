@@ -13,6 +13,8 @@
 /dist
 /dist.chrome
 /dist.firefox
+/chrome.zip
+/firefox.zip
 
 # misc
 .DS_Store

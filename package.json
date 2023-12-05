@@ -18,7 +18,8 @@
     "build": "npm run build:chrome & npm run build:firefox",
     "build:chrome": "webpack --config webpack.config.chrome.js",
     "build:firefox": "webpack --config webpack.config.firefox.js",
-    "watch": "webpack -w --config webpack.config.js",
+    "bundle": "rm -f chrome.zip && zip -r chrome.zip dist.chrome && rm -f firefox.zip && zip -r firefox.zip dist.firefox",
+    "watch": "webpack -w --config webpack.config.chrome.js",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
