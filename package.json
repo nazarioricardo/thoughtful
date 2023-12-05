@@ -18,7 +18,9 @@
     "build": "npm run chrome & npm run firefox",
     "chrome": "webpack --config webpack.config.chrome.js",
     "firefox": "webpack --config webpack.config.firefox.js",
-    "bundle": "rm -f chrome.zip && zip -r chrome.zip dist.chrome && rm -f firefox.zip && zip -r firefox.zip dist.firefox",
+    "package": "npm run package:chrome & npm run package:firefox",
+    "package:chrome": "rm -f chrome.zip && zip -r chrome.zip chrome",
+    "package:firefox": "rm -f firefox.zip && cd firefox && zip -r firefox.zip . && cd .. && mv firefox/firefox.zip .",
     "watch": "webpack -w --config webpack.config.chrome.js",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

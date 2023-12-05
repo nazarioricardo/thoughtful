@@ -29,7 +29,7 @@
   "background": {
     "service_worker": "background.js"
   },
-  "permissions": ["declarativeNetRequest", "storage", "scripting", "activeTab"],
+  "permissions": ["declarativeNetRequest", "storage", "scripting"],
   "host_permissions": ["<all_urls>"],
   "web_accessible_resources": [
     {

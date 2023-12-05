@@ -50,7 +50,6 @@ module.exports = {
         { from: "manifest.v2.json", to: "manifest.json" },
         { from: "images", to: "images" },
         { from: "favicon.ico", to: "favicon.ico" },
-        { from: "robots.txt", to: "robots.txt" },
       ],
     }),
     ...getHtmlPlugins(["index"]),
@@ -59,7 +58,7 @@ module.exports = {
     extensions: [".tsx", ".ts", ".js"],
   },
   output: {
-    path: path.join(__dirname, "dist.firefox"),
+    path: path.join(__dirname, "firefox"),
     filename: "[name].js",
   },
 };

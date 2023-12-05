@@ -1,5 +1,15 @@
 # Thoughtful
 
+# How to Run this App
+
+## Chrome
+
+```bash
+npm run chrome
+```
+
+## Firefox
+
 ## Manifest
 
 Website blockers are a valuable tool for, among many other things, staying on track with your intentions. If you think you go to YouTube too much, you can add [YouTube.com](http://youtube.com/) to a list on a browser plug-in, and you can no longer go to YouTube.com.

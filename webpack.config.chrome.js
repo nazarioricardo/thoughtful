@@ -50,7 +50,6 @@ module.exports = {
         { from: "manifest.v3.json", to: "manifest.json" },
         { from: "images", to: "images" },
         { from: "favicon.ico", to: "favicon.ico" },
-        { from: "robots.txt", to: "robots.txt" },
       ],
     }),
     ...getHtmlPlugins(["index"]),
@@ -59,7 +58,7 @@ module.exports = {
     extensions: [".tsx", ".ts", ".js"],
   },
   output: {
-    path: path.join(__dirname, "dist.chrome"),
+    path: path.join(__dirname, "chrome"),
     filename: "[name].js",
   },
 };
