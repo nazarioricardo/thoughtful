@@ -1,0 +1,986 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		D3A79AF12B1ACE9900C788D6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A79AF02B1ACE9900C788D6 /* AppDelegate.swift */; };
+		D3A79AF32B1ACE9900C788D6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A79AF22B1ACE9900C788D6 /* SceneDelegate.swift */; };
+		D3A79AF62B1ACE9900C788D6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D3A79AF42B1ACE9900C788D6 /* LaunchScreen.storyboard */; };
+		D3A79AF92B1ACE9900C788D6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D3A79AF72B1ACE9900C788D6 /* Main.storyboard */; };
+		D3A79B022B1ACE9900C788D6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A79B012B1ACE9900C788D6 /* AppDelegate.swift */; };
+		D3A79B052B1ACE9900C788D6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D3A79B032B1ACE9900C788D6 /* Main.storyboard */; };
+		D3A79B0D2B1ACE9900C788D6 /* Thoughtful Extension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = D3A79B0C2B1ACE9900C788D6 /* Thoughtful Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		D3A79B172B1ACE9900C788D6 /* Thoughtful Extension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = D3A79B162B1ACE9900C788D6 /* Thoughtful Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		D3A79B1D2B1ACE9900C788D6 /* Main.html in Resources */ = {isa = PBXBuildFile; fileRef = D3A79AE02B1ACE9800C788D6 /* Main.html */; };
+		D3A79B1E2B1ACE9900C788D6 /* Main.html in Resources */ = {isa = PBXBuildFile; fileRef = D3A79AE02B1ACE9800C788D6 /* Main.html */; };
+		D3A79B1F2B1ACE9900C788D6 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = D3A79AE22B1ACE9800C788D6 /* Icon.png */; };
+		D3A79B202B1ACE9900C788D6 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = D3A79AE22B1ACE9800C788D6 /* Icon.png */; };
+		D3A79B212B1ACE9900C788D6 /* Style.css in Resources */ = {isa = PBXBuildFile; fileRef = D3A79AE32B1ACE9800C788D6 /* Style.css */; };
+		D3A79B222B1ACE9900C788D6 /* Style.css in Resources */ = {isa = PBXBuildFile; fileRef = D3A79AE32B1ACE9800C788D6 /* Style.css */; };
+		D3A79B232B1ACE9900C788D6 /* Script.js in Resources */ = {isa = PBXBuildFile; fileRef = D3A79AE42B1ACE9800C788D6 /* Script.js */; };
+		D3A79B242B1ACE9900C788D6 /* Script.js in Resources */ = {isa = PBXBuildFile; fileRef = D3A79AE42B1ACE9800C788D6 /* Script.js */; };
+		D3A79B252B1ACE9900C788D6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A79AE52B1ACE9800C788D6 /* ViewController.swift */; };
+		D3A79B262B1ACE9900C788D6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A79AE52B1ACE9800C788D6 /* ViewController.swift */; };
+		D3A79B272B1ACE9900C788D6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D3A79AE62B1ACE9900C788D6 /* Assets.xcassets */; };
+		D3A79B282B1ACE9900C788D6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D3A79AE62B1ACE9900C788D6 /* Assets.xcassets */; };
+		D3A79B292B1ACE9900C788D6 /* SafariWebExtensionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A79AE82B1ACE9900C788D6 /* SafariWebExtensionHandler.swift */; };
+		D3A79B2A2B1ACE9900C788D6 /* SafariWebExtensionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A79AE82B1ACE9900C788D6 /* SafariWebExtensionHandler.swift */; };
+		D3A79B472B1ACE9900C788D6 /* favicon.ico in Resources */ = {isa = PBXBuildFile; fileRef = D3A79B3C2B1ACE9900C788D6 /* favicon.ico */; };
+		D3A79B482B1ACE9900C788D6 /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = D3A79B3D2B1ACE9900C788D6 /* index.html */; };
+		D3A79B492B1ACE9900C788D6 /* background.js in Resources */ = {isa = PBXBuildFile; fileRef = D3A79B3E2B1ACE9900C788D6 /* background.js */; };
+		D3A79B4A2B1ACE9900C788D6 /* images in Resources */ = {isa = PBXBuildFile; fileRef = D3A79B3F2B1ACE9900C788D6 /* images */; };
+		D3A79B4B2B1ACE9900C788D6 /* index.js in Resources */ = {isa = PBXBuildFile; fileRef = D3A79B402B1ACE9900C788D6 /* index.js */; };
+		D3A79B4C2B1ACE9900C788D6 /* manifest.json in Resources */ = {isa = PBXBuildFile; fileRef = D3A79B412B1ACE9900C788D6 /* manifest.json */; };
+		D3A79B4D2B1ACE9900C788D6 /* content.js in Resources */ = {isa = PBXBuildFile; fileRef = D3A79B422B1ACE9900C788D6 /* content.js */; };
+		D3A79B4E2B1ACE9900C788D6 /* robots.txt in Resources */ = {isa = PBXBuildFile; fileRef = D3A79B432B1ACE9900C788D6 /* robots.txt */; };
+		D3A79B4F2B1ACE9900C788D6 /* index.js.LICENSE.txt in Resources */ = {isa = PBXBuildFile; fileRef = D3A79B442B1ACE9900C788D6 /* index.js.LICENSE.txt */; };
+		D3A79B502B1ACE9900C788D6 /* 131.js in Resources */ = {isa = PBXBuildFile; fileRef = D3A79B452B1ACE9900C788D6 /* 131.js */; };
+		D3A79B512B1ACE9900C788D6 /* content.js.LICENSE.txt in Resources */ = {isa = PBXBuildFile; fileRef = D3A79B462B1ACE9900C788D6 /* content.js.LICENSE.txt */; };
+		D3A79B522B1ACE9900C788D6 /* favicon.ico in Resources */ = {isa = PBXBuildFile; fileRef = D3A79B3C2B1ACE9900C788D6 /* favicon.ico */; };
+		D3A79B532B1ACE9900C788D6 /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = D3A79B3D2B1ACE9900C788D6 /* index.html */; };
+		D3A79B542B1ACE9900C788D6 /* background.js in Resources */ = {isa = PBXBuildFile; fileRef = D3A79B3E2B1ACE9900C788D6 /* background.js */; };
+		D3A79B552B1ACE9900C788D6 /* images in Resources */ = {isa = PBXBuildFile; fileRef = D3A79B3F2B1ACE9900C788D6 /* images */; };
+		D3A79B562B1ACE9900C788D6 /* index.js in Resources */ = {isa = PBXBuildFile; fileRef = D3A79B402B1ACE9900C788D6 /* index.js */; };
+		D3A79B572B1ACE9900C788D6 /* manifest.json in Resources */ = {isa = PBXBuildFile; fileRef = D3A79B412B1ACE9900C788D6 /* manifest.json */; };
+		D3A79B582B1ACE9900C788D6 /* content.js in Resources */ = {isa = PBXBuildFile; fileRef = D3A79B422B1ACE9900C788D6 /* content.js */; };
+		D3A79B592B1ACE9900C788D6 /* robots.txt in Resources */ = {isa = PBXBuildFile; fileRef = D3A79B432B1ACE9900C788D6 /* robots.txt */; };
+		D3A79B5A2B1ACE9900C788D6 /* index.js.LICENSE.txt in Resources */ = {isa = PBXBuildFile; fileRef = D3A79B442B1ACE9900C788D6 /* index.js.LICENSE.txt */; };
+		D3A79B5B2B1ACE9900C788D6 /* 131.js in Resources */ = {isa = PBXBuildFile; fileRef = D3A79B452B1ACE9900C788D6 /* 131.js */; };
+		D3A79B5C2B1ACE9900C788D6 /* content.js.LICENSE.txt in Resources */ = {isa = PBXBuildFile; fileRef = D3A79B462B1ACE9900C788D6 /* content.js.LICENSE.txt */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		D3A79B0E2B1ACE9900C788D6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D3A79ADA2B1ACE9800C788D6 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D3A79B0B2B1ACE9900C788D6;
+			remoteInfo = "Thoughtful Extension (iOS)";
+		};
+		D3A79B182B1ACE9900C788D6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D3A79ADA2B1ACE9800C788D6 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D3A79B152B1ACE9900C788D6;
+			remoteInfo = "Thoughtful Extension (macOS)";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		D3A79B302B1ACE9900C788D6 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				D3A79B0D2B1ACE9900C788D6 /* Thoughtful Extension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D3A79B372B1ACE9900C788D6 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				D3A79B172B1ACE9900C788D6 /* Thoughtful Extension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		D3A79AE12B1ACE9800C788D6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = Base; path = ../Base.lproj/Main.html; sourceTree = "<group>"; };
+		D3A79AE22B1ACE9800C788D6 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
+		D3A79AE32B1ACE9800C788D6 /* Style.css */ = {isa = PBXFileReference; lastKnownFileType = text.css; path = Style.css; sourceTree = "<group>"; };
+		D3A79AE42B1ACE9800C788D6 /* Script.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = Script.js; sourceTree = "<group>"; };
+		D3A79AE52B1ACE9800C788D6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		D3A79AE62B1ACE9900C788D6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		D3A79AE82B1ACE9900C788D6 /* SafariWebExtensionHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariWebExtensionHandler.swift; sourceTree = "<group>"; };
+		D3A79AED2B1ACE9900C788D6 /* Thoughtful.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Thoughtful.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D3A79AF02B1ACE9900C788D6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		D3A79AF22B1ACE9900C788D6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		D3A79AF52B1ACE9900C788D6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		D3A79AF82B1ACE9900C788D6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		D3A79AFA2B1ACE9900C788D6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D3A79AFF2B1ACE9900C788D6 /* Thoughtful.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Thoughtful.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D3A79B012B1ACE9900C788D6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		D3A79B042B1ACE9900C788D6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		D3A79B062B1ACE9900C788D6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D3A79B072B1ACE9900C788D6 /* Thoughtful.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Thoughtful.entitlements; sourceTree = "<group>"; };
+		D3A79B0C2B1ACE9900C788D6 /* Thoughtful Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Thoughtful Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D3A79B112B1ACE9900C788D6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D3A79B162B1ACE9900C788D6 /* Thoughtful Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Thoughtful Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D3A79B1B2B1ACE9900C788D6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D3A79B1C2B1ACE9900C788D6 /* Thoughtful.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Thoughtful.entitlements; sourceTree = "<group>"; };
+		D3A79B3C2B1ACE9900C788D6 /* favicon.ico */ = {isa = PBXFileReference; lastKnownFileType = image.ico; name = favicon.ico; path = ../../dist.chrome/favicon.ico; sourceTree = "<group>"; };
+		D3A79B3D2B1ACE9900C788D6 /* index.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = index.html; path = ../../dist.chrome/index.html; sourceTree = "<group>"; };
+		D3A79B3E2B1ACE9900C788D6 /* background.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; name = background.js; path = ../../dist.chrome/background.js; sourceTree = "<group>"; };
+		D3A79B3F2B1ACE9900C788D6 /* images */ = {isa = PBXFileReference; lastKnownFileType = folder; name = images; path = ../../dist.chrome/images; sourceTree = "<group>"; };
+		D3A79B402B1ACE9900C788D6 /* index.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; name = index.js; path = ../../dist.chrome/index.js; sourceTree = "<group>"; };
+		D3A79B412B1ACE9900C788D6 /* manifest.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = manifest.json; path = ../../dist.chrome/manifest.json; sourceTree = "<group>"; };
+		D3A79B422B1ACE9900C788D6 /* content.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; name = content.js; path = ../../dist.chrome/content.js; sourceTree = "<group>"; };
+		D3A79B432B1ACE9900C788D6 /* robots.txt */ = {isa = PBXFileReference; lastKnownFileType = text; name = robots.txt; path = ../../dist.chrome/robots.txt; sourceTree = "<group>"; };
+		D3A79B442B1ACE9900C788D6 /* index.js.LICENSE.txt */ = {isa = PBXFileReference; lastKnownFileType = text; name = index.js.LICENSE.txt; path = ../../dist.chrome/index.js.LICENSE.txt; sourceTree = "<group>"; };
+		D3A79B452B1ACE9900C788D6 /* 131.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; name = 131.js; path = ../../dist.chrome/131.js; sourceTree = "<group>"; };
+		D3A79B462B1ACE9900C788D6 /* content.js.LICENSE.txt */ = {isa = PBXFileReference; lastKnownFileType = text; name = content.js.LICENSE.txt; path = ../../dist.chrome/content.js.LICENSE.txt; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D3A79AEA2B1ACE9900C788D6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D3A79AFC2B1ACE9900C788D6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D3A79B092B1ACE9900C788D6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D3A79B132B1ACE9900C788D6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		D3A79AD92B1ACE9800C788D6 = {
+			isa = PBXGroup;
+			children = (
+				D3A79ADE2B1ACE9800C788D6 /* Shared (App) */,
+				D3A79AE72B1ACE9900C788D6 /* Shared (Extension) */,
+				D3A79AEF2B1ACE9900C788D6 /* iOS (App) */,
+				D3A79B002B1ACE9900C788D6 /* macOS (App) */,
+				D3A79B102B1ACE9900C788D6 /* iOS (Extension) */,
+				D3A79B1A2B1ACE9900C788D6 /* macOS (Extension) */,
+				D3A79AEE2B1ACE9900C788D6 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		D3A79ADE2B1ACE9800C788D6 /* Shared (App) */ = {
+			isa = PBXGroup;
+			children = (
+				D3A79AE52B1ACE9800C788D6 /* ViewController.swift */,
+				D3A79AE62B1ACE9900C788D6 /* Assets.xcassets */,
+				D3A79ADF2B1ACE9800C788D6 /* Resources */,
+			);
+			path = "Shared (App)";
+			sourceTree = "<group>";
+		};
+		D3A79ADF2B1ACE9800C788D6 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				D3A79AE02B1ACE9800C788D6 /* Main.html */,
+				D3A79AE22B1ACE9800C788D6 /* Icon.png */,
+				D3A79AE32B1ACE9800C788D6 /* Style.css */,
+				D3A79AE42B1ACE9800C788D6 /* Script.js */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		D3A79AE72B1ACE9900C788D6 /* Shared (Extension) */ = {
+			isa = PBXGroup;
+			children = (
+				D3A79B3B2B1ACE9900C788D6 /* Resources */,
+				D3A79AE82B1ACE9900C788D6 /* SafariWebExtensionHandler.swift */,
+			);
+			path = "Shared (Extension)";
+			sourceTree = "<group>";
+		};
+		D3A79AEE2B1ACE9900C788D6 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D3A79AED2B1ACE9900C788D6 /* Thoughtful.app */,
+				D3A79AFF2B1ACE9900C788D6 /* Thoughtful.app */,
+				D3A79B0C2B1ACE9900C788D6 /* Thoughtful Extension.appex */,
+				D3A79B162B1ACE9900C788D6 /* Thoughtful Extension.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D3A79AEF2B1ACE9900C788D6 /* iOS (App) */ = {
+			isa = PBXGroup;
+			children = (
+				D3A79AF02B1ACE9900C788D6 /* AppDelegate.swift */,
+				D3A79AF22B1ACE9900C788D6 /* SceneDelegate.swift */,
+				D3A79AF42B1ACE9900C788D6 /* LaunchScreen.storyboard */,
+				D3A79AF72B1ACE9900C788D6 /* Main.storyboard */,
+				D3A79AFA2B1ACE9900C788D6 /* Info.plist */,
+			);
+			path = "iOS (App)";
+			sourceTree = "<group>";
+		};
+		D3A79B002B1ACE9900C788D6 /* macOS (App) */ = {
+			isa = PBXGroup;
+			children = (
+				D3A79B012B1ACE9900C788D6 /* AppDelegate.swift */,
+				D3A79B032B1ACE9900C788D6 /* Main.storyboard */,
+				D3A79B062B1ACE9900C788D6 /* Info.plist */,
+				D3A79B072B1ACE9900C788D6 /* Thoughtful.entitlements */,
+			);
+			path = "macOS (App)";
+			sourceTree = "<group>";
+		};
+		D3A79B102B1ACE9900C788D6 /* iOS (Extension) */ = {
+			isa = PBXGroup;
+			children = (
+				D3A79B112B1ACE9900C788D6 /* Info.plist */,
+			);
+			path = "iOS (Extension)";
+			sourceTree = "<group>";
+		};
+		D3A79B1A2B1ACE9900C788D6 /* macOS (Extension) */ = {
+			isa = PBXGroup;
+			children = (
+				D3A79B1B2B1ACE9900C788D6 /* Info.plist */,
+				D3A79B1C2B1ACE9900C788D6 /* Thoughtful.entitlements */,
+			);
+			path = "macOS (Extension)";
+			sourceTree = "<group>";
+		};
+		D3A79B3B2B1ACE9900C788D6 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				D3A79B3C2B1ACE9900C788D6 /* favicon.ico */,
+				D3A79B3D2B1ACE9900C788D6 /* index.html */,
+				D3A79B3E2B1ACE9900C788D6 /* background.js */,
+				D3A79B3F2B1ACE9900C788D6 /* images */,
+				D3A79B402B1ACE9900C788D6 /* index.js */,
+				D3A79B412B1ACE9900C788D6 /* manifest.json */,
+				D3A79B422B1ACE9900C788D6 /* content.js */,
+				D3A79B432B1ACE9900C788D6 /* robots.txt */,
+				D3A79B442B1ACE9900C788D6 /* index.js.LICENSE.txt */,
+				D3A79B452B1ACE9900C788D6 /* 131.js */,
+				D3A79B462B1ACE9900C788D6 /* content.js.LICENSE.txt */,
+			);
+			name = Resources;
+			path = "Shared (Extension)";
+			sourceTree = SOURCE_ROOT;
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		D3A79AEC2B1ACE9900C788D6 /* Thoughtful (iOS) */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D3A79B312B1ACE9900C788D6 /* Build configuration list for PBXNativeTarget "Thoughtful (iOS)" */;
+			buildPhases = (
+				D3A79AE92B1ACE9900C788D6 /* Sources */,
+				D3A79AEA2B1ACE9900C788D6 /* Frameworks */,
+				D3A79AEB2B1ACE9900C788D6 /* Resources */,
+				D3A79B302B1ACE9900C788D6 /* Embed Foundation Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D3A79B0F2B1ACE9900C788D6 /* PBXTargetDependency */,
+			);
+			name = "Thoughtful (iOS)";
+			productName = "Thoughtful (iOS)";
+			productReference = D3A79AED2B1ACE9900C788D6 /* Thoughtful.app */;
+			productType = "com.apple.product-type.application";
+		};
+		D3A79AFE2B1ACE9900C788D6 /* Thoughtful (macOS) */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D3A79B382B1ACE9900C788D6 /* Build configuration list for PBXNativeTarget "Thoughtful (macOS)" */;
+			buildPhases = (
+				D3A79AFB2B1ACE9900C788D6 /* Sources */,
+				D3A79AFC2B1ACE9900C788D6 /* Frameworks */,
+				D3A79AFD2B1ACE9900C788D6 /* Resources */,
+				D3A79B372B1ACE9900C788D6 /* Embed Foundation Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D3A79B192B1ACE9900C788D6 /* PBXTargetDependency */,
+			);
+			name = "Thoughtful (macOS)";
+			productName = "Thoughtful (macOS)";
+			productReference = D3A79AFF2B1ACE9900C788D6 /* Thoughtful.app */;
+			productType = "com.apple.product-type.application";
+		};
+		D3A79B0B2B1ACE9900C788D6 /* Thoughtful Extension (iOS) */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D3A79B2D2B1ACE9900C788D6 /* Build configuration list for PBXNativeTarget "Thoughtful Extension (iOS)" */;
+			buildPhases = (
+				D3A79B082B1ACE9900C788D6 /* Sources */,
+				D3A79B092B1ACE9900C788D6 /* Frameworks */,
+				D3A79B0A2B1ACE9900C788D6 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Thoughtful Extension (iOS)";
+			productName = "Thoughtful Extension (iOS)";
+			productReference = D3A79B0C2B1ACE9900C788D6 /* Thoughtful Extension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		D3A79B152B1ACE9900C788D6 /* Thoughtful Extension (macOS) */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D3A79B342B1ACE9900C788D6 /* Build configuration list for PBXNativeTarget "Thoughtful Extension (macOS)" */;
+			buildPhases = (
+				D3A79B122B1ACE9900C788D6 /* Sources */,
+				D3A79B132B1ACE9900C788D6 /* Frameworks */,
+				D3A79B142B1ACE9900C788D6 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Thoughtful Extension (macOS)";
+			productName = "Thoughtful Extension (macOS)";
+			productReference = D3A79B162B1ACE9900C788D6 /* Thoughtful Extension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D3A79ADA2B1ACE9800C788D6 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1500;
+				LastUpgradeCheck = 1500;
+				TargetAttributes = {
+					D3A79AEC2B1ACE9900C788D6 = {
+						CreatedOnToolsVersion = 15.0.1;
+					};
+					D3A79AFE2B1ACE9900C788D6 = {
+						CreatedOnToolsVersion = 15.0.1;
+					};
+					D3A79B0B2B1ACE9900C788D6 = {
+						CreatedOnToolsVersion = 15.0.1;
+					};
+					D3A79B152B1ACE9900C788D6 = {
+						CreatedOnToolsVersion = 15.0.1;
+					};
+				};
+			};
+			buildConfigurationList = D3A79ADD2B1ACE9800C788D6 /* Build configuration list for PBXProject "Thoughtful" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = D3A79AD92B1ACE9800C788D6;
+			productRefGroup = D3A79AEE2B1ACE9900C788D6 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D3A79AEC2B1ACE9900C788D6 /* Thoughtful (iOS) */,
+				D3A79AFE2B1ACE9900C788D6 /* Thoughtful (macOS) */,
+				D3A79B0B2B1ACE9900C788D6 /* Thoughtful Extension (iOS) */,
+				D3A79B152B1ACE9900C788D6 /* Thoughtful Extension (macOS) */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		D3A79AEB2B1ACE9900C788D6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D3A79B1F2B1ACE9900C788D6 /* Icon.png in Resources */,
+				D3A79AF62B1ACE9900C788D6 /* LaunchScreen.storyboard in Resources */,
+				D3A79B1D2B1ACE9900C788D6 /* Main.html in Resources */,
+				D3A79B232B1ACE9900C788D6 /* Script.js in Resources */,
+				D3A79B272B1ACE9900C788D6 /* Assets.xcassets in Resources */,
+				D3A79AF92B1ACE9900C788D6 /* Main.storyboard in Resources */,
+				D3A79B212B1ACE9900C788D6 /* Style.css in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D3A79AFD2B1ACE9900C788D6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D3A79B202B1ACE9900C788D6 /* Icon.png in Resources */,
+				D3A79B222B1ACE9900C788D6 /* Style.css in Resources */,
+				D3A79B052B1ACE9900C788D6 /* Main.storyboard in Resources */,
+				D3A79B242B1ACE9900C788D6 /* Script.js in Resources */,
+				D3A79B282B1ACE9900C788D6 /* Assets.xcassets in Resources */,
+				D3A79B1E2B1ACE9900C788D6 /* Main.html in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D3A79B0A2B1ACE9900C788D6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D3A79B5B2B1ACE9900C788D6 /* 131.js in Resources */,
+				D3A79B5C2B1ACE9900C788D6 /* content.js.LICENSE.txt in Resources */,
+				D3A79B562B1ACE9900C788D6 /* index.js in Resources */,
+				D3A79B5A2B1ACE9900C788D6 /* index.js.LICENSE.txt in Resources */,
+				D3A79B592B1ACE9900C788D6 /* robots.txt in Resources */,
+				D3A79B552B1ACE9900C788D6 /* images in Resources */,
+				D3A79B522B1ACE9900C788D6 /* favicon.ico in Resources */,
+				D3A79B542B1ACE9900C788D6 /* background.js in Resources */,
+				D3A79B572B1ACE9900C788D6 /* manifest.json in Resources */,
+				D3A79B582B1ACE9900C788D6 /* content.js in Resources */,
+				D3A79B532B1ACE9900C788D6 /* index.html in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D3A79B142B1ACE9900C788D6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D3A79B502B1ACE9900C788D6 /* 131.js in Resources */,
+				D3A79B512B1ACE9900C788D6 /* content.js.LICENSE.txt in Resources */,
+				D3A79B4B2B1ACE9900C788D6 /* index.js in Resources */,
+				D3A79B4F2B1ACE9900C788D6 /* index.js.LICENSE.txt in Resources */,
+				D3A79B4E2B1ACE9900C788D6 /* robots.txt in Resources */,
+				D3A79B4A2B1ACE9900C788D6 /* images in Resources */,
+				D3A79B472B1ACE9900C788D6 /* favicon.ico in Resources */,
+				D3A79B492B1ACE9900C788D6 /* background.js in Resources */,
+				D3A79B4C2B1ACE9900C788D6 /* manifest.json in Resources */,
+				D3A79B4D2B1ACE9900C788D6 /* content.js in Resources */,
+				D3A79B482B1ACE9900C788D6 /* index.html in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		D3A79AE92B1ACE9900C788D6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D3A79B252B1ACE9900C788D6 /* ViewController.swift in Sources */,
+				D3A79AF12B1ACE9900C788D6 /* AppDelegate.swift in Sources */,
+				D3A79AF32B1ACE9900C788D6 /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D3A79AFB2B1ACE9900C788D6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D3A79B262B1ACE9900C788D6 /* ViewController.swift in Sources */,
+				D3A79B022B1ACE9900C788D6 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D3A79B082B1ACE9900C788D6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D3A79B292B1ACE9900C788D6 /* SafariWebExtensionHandler.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D3A79B122B1ACE9900C788D6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D3A79B2A2B1ACE9900C788D6 /* SafariWebExtensionHandler.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		D3A79B0F2B1ACE9900C788D6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D3A79B0B2B1ACE9900C788D6 /* Thoughtful Extension (iOS) */;
+			targetProxy = D3A79B0E2B1ACE9900C788D6 /* PBXContainerItemProxy */;
+		};
+		D3A79B192B1ACE9900C788D6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D3A79B152B1ACE9900C788D6 /* Thoughtful Extension (macOS) */;
+			targetProxy = D3A79B182B1ACE9900C788D6 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		D3A79AE02B1ACE9800C788D6 /* Main.html */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D3A79AE12B1ACE9800C788D6 /* Base */,
+			);
+			name = Main.html;
+			sourceTree = "<group>";
+		};
+		D3A79AF42B1ACE9900C788D6 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D3A79AF52B1ACE9900C788D6 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		D3A79AF72B1ACE9900C788D6 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D3A79AF82B1ACE9900C788D6 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		D3A79B032B1ACE9900C788D6 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D3A79B042B1ACE9900C788D6 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		D3A79B2B2B1ACE9900C788D6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		D3A79B2C2B1ACE9900C788D6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+			};
+			name = Release;
+		};
+		D3A79B2E2B1ACE9900C788D6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "iOS (Extension)/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Thoughtful Extension";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.RicardoNazario.Thoughtful.Extension;
+				PRODUCT_NAME = "Thoughtful Extension";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		D3A79B2F2B1ACE9900C788D6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "iOS (Extension)/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Thoughtful Extension";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.RicardoNazario.Thoughtful.Extension;
+				PRODUCT_NAME = "Thoughtful Extension";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		D3A79B322B1ACE9900C788D6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "iOS (App)/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = Thoughtful;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+					"-framework",
+					WebKit,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.RicardoNazario.Thoughtful;
+				PRODUCT_NAME = Thoughtful;
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		D3A79B332B1ACE9900C788D6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "iOS (App)/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = Thoughtful;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+					"-framework",
+					WebKit,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.RicardoNazario.Thoughtful;
+				PRODUCT_NAME = Thoughtful;
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		D3A79B352B1ACE9900C788D6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "macOS (Extension)/Thoughtful.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "macOS (Extension)/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Thoughtful Extension";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.RicardoNazario.Thoughtful.Extension;
+				PRODUCT_NAME = "Thoughtful Extension";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		D3A79B362B1ACE9900C788D6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = "macOS (Extension)/Thoughtful.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "macOS (Extension)/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Thoughtful Extension";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.RicardoNazario.Thoughtful.Extension;
+				PRODUCT_NAME = "Thoughtful Extension";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		D3A79B392B1ACE9900C788D6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "macOS (App)/Thoughtful.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "macOS (App)/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = Thoughtful;
+				INFOPLIST_KEY_NSMainStoryboardFile = Main;
+				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+					"-framework",
+					WebKit,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.RicardoNazario.Thoughtful;
+				PRODUCT_NAME = Thoughtful;
+				SDKROOT = macosx;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		D3A79B3A2B1ACE9900C788D6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "macOS (App)/Thoughtful.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "macOS (App)/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = Thoughtful;
+				INFOPLIST_KEY_NSMainStoryboardFile = Main;
+				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SafariServices,
+					"-framework",
+					WebKit,
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.RicardoNazario.Thoughtful;
+				PRODUCT_NAME = Thoughtful;
+				SDKROOT = macosx;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		D3A79ADD2B1ACE9800C788D6 /* Build configuration list for PBXProject "Thoughtful" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D3A79B2B2B1ACE9900C788D6 /* Debug */,
+				D3A79B2C2B1ACE9900C788D6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D3A79B2D2B1ACE9900C788D6 /* Build configuration list for PBXNativeTarget "Thoughtful Extension (iOS)" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D3A79B2E2B1ACE9900C788D6 /* Debug */,
+				D3A79B2F2B1ACE9900C788D6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D3A79B312B1ACE9900C788D6 /* Build configuration list for PBXNativeTarget "Thoughtful (iOS)" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D3A79B322B1ACE9900C788D6 /* Debug */,
+				D3A79B332B1ACE9900C788D6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D3A79B342B1ACE9900C788D6 /* Build configuration list for PBXNativeTarget "Thoughtful Extension (macOS)" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D3A79B352B1ACE9900C788D6 /* Debug */,
+				D3A79B362B1ACE9900C788D6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D3A79B382B1ACE9900C788D6 /* Build configuration list for PBXNativeTarget "Thoughtful (macOS)" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D3A79B392B1ACE9900C788D6 /* Debug */,
+				D3A79B3A2B1ACE9900C788D6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D3A79ADA2B1ACE9800C788D6 /* Project object */;
+}
