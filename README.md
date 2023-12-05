@@ -2,13 +2,32 @@
 
 # How to Run this App
 
-## Chrome
+First install npm packages
+
+```bash
+npm install
+```
+
+## To Build and Package Chrome and Firefox
+
+```bash
+npm run build
+npm run package
+```
+
+## Chrome Only
 
 ```bash
 npm run chrome
+npm run package:chrome
 ```
 
-## Firefox
+## Firefox Only
+
+```bash
+npm run firefox
+npm run package:firefox
+```
 
 ## Manifest
 
