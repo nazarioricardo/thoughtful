@@ -1,6 +1,6 @@
 {
   "manifest_version": 2,
-  "name": "Thoughtful",
+  "name": "This Way",
   "version": "1.1",
   "icons": {
     "16": "images/icon-16.png",
@@ -10,7 +10,7 @@
   },
   "browser_action": {
     "default_icon": "images/icon-32.png",
-    "default_title": "Thoughtful",
+    "default_title": "This Way",
     "default_popup": "index.html"
   },
   "background": {
@@ -31,9 +31,9 @@
   ],
   "browser_specific_settings": {
     "gecko": {
-      "id": "thoughtful.firefox@gneiss.dev"
+      "id": "this-way.firefox@gneiss.dev"
     }
   },
   "description": "Save yourself from your own impulses",
-  "homepage_url": "https://github.com/nazarioricardo/thoughtful"
+  "homepage_url": "https://github.com/nazarioricardo/this-way"
 }
