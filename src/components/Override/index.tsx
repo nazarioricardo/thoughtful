@@ -1,7 +1,7 @@
 import Browser from "webextension-polyfill";
 import { ArrowRight } from "@mui/icons-material";
 import { Button, FormControl, FormLabel, Input } from "@mui/joy";
-import { FormEvent, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
 import { unblockWebsite } from "../../utils";
 
 type OverrideProps = {
@@ -10,8 +10,10 @@ type OverrideProps = {
 };
 
 function Override({ url, hostname }: OverrideProps) {
+  const [visiting, setVisiting] = useState<string>();
   const [message, setMessage] = useState<string>();
   const [error, setError] = useState<Error | undefined>();
+
   const onSubmitForm = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (!message) {
@@ -20,8 +22,15 @@ function Override({ url, hostname }: OverrideProps) {
     }
 
     await unblockWebsite(url, message);
-    document.location.href = url;
+    document.location.href = visiting || url;
+    Browser.storage.sync.remove("visiting");
   };
+
+  useEffect(() => {
+    Browser.storage.sync.get(["visiting"]).then((result) => {
+      setVisiting(result.visiting);
+    });
+  }, []);
 
   return (
     <form onSubmit={onSubmitForm} style={{ maxWidth: "600px", width: "90vw" }}>

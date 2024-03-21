@@ -79,6 +79,7 @@ export const blockWebsite = async (
 export const unblockWebsite = async (url: string, message: string) => {
   const response = await Browser.storage.sync.get([url]);
   const data = response[url];
+
   await Browser.storage.sync.set({
     [url]: {
       ...data,
@@ -97,7 +98,7 @@ export const registerContentScript = async (url: string) => {
         id: url + "-script",
         js: ["content.js"],
         persistAcrossSessions: true,
-        matches: [url + "/*"],
+        matches: [url + "*"],
         runAt: "document_end",
         allFrames: true,
       },

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import ReactDOM from "react-dom";
 import Browser from "webextension-polyfill";
-import { getFromStorage } from "./utils";
+import { createUrl, getFromStorage } from "./utils";
 import {
   Card,
   CardContent,
@@ -12,10 +12,11 @@ import {
 } from "@mui/joy";
 import { Check, DragIndicator } from "@mui/icons-material";
 import Draggable from "react-draggable";
+import { getHostName } from "./constants";
 
 function Content() {
   const [message, setMessage] = useState("");
-  const url = document.location.href;
+  const url = createUrl(getHostName(document.location.href));
 
   useEffect(() => {
     if (url.indexOf("chrome-extension://") == 0) {
@@ -104,7 +105,7 @@ function Content() {
 
 const hostElement = document.createElement("div");
 hostElement.className = "extension-host";
-hostElement.innerHTML = "thouthful shadow";
+hostElement.innerHTML = "extension shadow";
 document.body.appendChild(hostElement);
 
 //Using Shadow Root
