@@ -107,24 +107,6 @@ function Content() {
   );
 }
 
-// const container = document.createElement("div");
-// const shadowContainer = container.attachShadow({ mode: "open" });
-// const shadowRootElement = document.createElement("div");
-// shadowContainer.appendChild(shadowRootElement);
-
-// const cache = createCache({
-//   key: "shadow",
-//   prepend: true,
-//   container: shadowContainer,
-// });
-
-// ReactDOM.render(
-//   <CacheProvider value={cache}>
-//     <Content />
-//   </CacheProvider>,
-//   shadowRootElement
-// );
-
 const hostElement = document.createElement("div");
 hostElement.className = "extension-root";
 document.body.appendChild(hostElement);
@@ -142,29 +124,3 @@ ReactDOM.render(
   </CacheProvider>,
   shadowRoot
 );
-
-//Using Shadow Root
-// const host = document.querySelector(".extension-host")!;
-// const root = host.attachShadow({ mode: "open" });
-// const app = document.createElement("div");
-
-// app.id = "extension-root";
-
-// app.appendChild(root);
-// document.body.appendChild(app);
-// ReactDOM.render(<Content />, hostElement);
-
-// const container = document.createElement("div");
-// container.classList.add("shadow-container");
-// document.body.appendChild(container);
-// const shadowRoot = container.attachShadow({ mode: "open" });
-// const target = container.shadowRoot;
-
-// ReactDOM.render(<Content />, target);
-
-// const container = document.createElement("div");
-// const shadowContainer = container.attachShadow({ mode: "open" });
-// const shadowRootElement = document.createElement("div");
-// shadowContainer.appendChild(shadowRootElement);
-
-// const cache = createCache();
