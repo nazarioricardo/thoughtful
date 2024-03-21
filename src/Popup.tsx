@@ -105,14 +105,14 @@ function Popup() {
 
     const newStorage = await Browser.storage.sync.get();
     setStorage(newStorage as Storage);
-    setSites(Object.keys(newStorage));
+    setSites(Object.keys(newStorage).filter((key) => key !== "visiting"));
   };
 
   useEffect(() => {
     Browser.storage.sync
       .get()
       .then((newStorage) => {
-        setSites(Object.keys(newStorage));
+        setSites(Object.keys(newStorage).filter((key) => key !== "visiting"));
         setStorage(newStorage as Storage);
       })
       .catch((error) => {

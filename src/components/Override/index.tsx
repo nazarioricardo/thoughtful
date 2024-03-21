@@ -13,6 +13,7 @@ function Override({ url, hostname }: OverrideProps) {
   const [visiting, setVisiting] = useState<string>();
   const [message, setMessage] = useState<string>();
   const [error, setError] = useState<Error | undefined>();
+
   const onSubmitForm = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (!message) {
@@ -21,7 +22,8 @@ function Override({ url, hostname }: OverrideProps) {
     }
 
     await unblockWebsite(url, message);
-    document.location.href = url;
+    document.location.href = visiting || url;
+    Browser.storage.sync.remove("visiting");
   };
 
   useEffect(() => {
