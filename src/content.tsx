@@ -12,7 +12,9 @@ import {
 } from "@mui/joy";
 import { Check, DragIndicator } from "@mui/icons-material";
 import Draggable from "react-draggable";
+import createCache from "@emotion/cache";
 import { getHostName } from "./constants";
+import { CacheProvider } from "@emotion/react";
 
 function Content() {
   const [message, setMessage] = useState("");
@@ -26,6 +28,8 @@ function Content() {
     Browser.storage.sync.get([url]).then((store) => {
       setMessage(store[url].message);
     });
+
+    Browser.storage.sync.remove(["visiting"]);
   }, [url]);
 
   const handleDone = async () => {
@@ -40,7 +44,7 @@ function Content() {
   };
 
   return (
-    <CssVarsProvider defaultMode="dark">
+    <CssVarsProvider defaultMode="dark" colorSchemeSelector=":host">
       <Draggable>
         <Card
           variant="soft"
@@ -53,7 +57,7 @@ function Content() {
             maxWidth: "400px",
             boxShadow: "black 4px 2px 20px 0px",
             backdropFilter: "blur(2px)",
-            background: "#171a1ce8",
+            // background: "#171a1ce8",
             backgroundColor: "none",
 
             ":hover": { cursor: "grab" },
@@ -103,18 +107,64 @@ function Content() {
   );
 }
 
+// const container = document.createElement("div");
+// const shadowContainer = container.attachShadow({ mode: "open" });
+// const shadowRootElement = document.createElement("div");
+// shadowContainer.appendChild(shadowRootElement);
+
+// const cache = createCache({
+//   key: "shadow",
+//   prepend: true,
+//   container: shadowContainer,
+// });
+
+// ReactDOM.render(
+//   <CacheProvider value={cache}>
+//     <Content />
+//   </CacheProvider>,
+//   shadowRootElement
+// );
+
 const hostElement = document.createElement("div");
-hostElement.className = "extension-host";
-hostElement.innerHTML = "extension shadow";
+hostElement.className = "extension-root";
 document.body.appendChild(hostElement);
+const shadowRoot = hostElement.attachShadow({ mode: "open" });
+
+const cache = createCache({
+  key: "shadow-styles",
+  prepend: true,
+  container: shadowRoot,
+});
+
+ReactDOM.render(
+  <CacheProvider value={cache}>
+    <Content />
+  </CacheProvider>,
+  shadowRoot
+);
 
 //Using Shadow Root
-const host = document.querySelector(".extension-host")!;
-const root = host.attachShadow({ mode: "open" });
-const app = document.createElement("div");
+// const host = document.querySelector(".extension-host")!;
+// const root = host.attachShadow({ mode: "open" });
+// const app = document.createElement("div");
 
-app.id = "extension-root";
+// app.id = "extension-root";
 
-app.appendChild(root);
-document.body.appendChild(app);
-ReactDOM.render(<Content />, app);
+// app.appendChild(root);
+// document.body.appendChild(app);
+// ReactDOM.render(<Content />, hostElement);
+
+// const container = document.createElement("div");
+// container.classList.add("shadow-container");
+// document.body.appendChild(container);
+// const shadowRoot = container.attachShadow({ mode: "open" });
+// const target = container.shadowRoot;
+
+// ReactDOM.render(<Content />, target);
+
+// const container = document.createElement("div");
+// const shadowContainer = container.attachShadow({ mode: "open" });
+// const shadowRootElement = document.createElement("div");
+// shadowContainer.appendChild(shadowRootElement);
+
+// const cache = createCache();

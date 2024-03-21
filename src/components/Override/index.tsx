@@ -22,8 +22,9 @@ function Override({ url, hostname }: OverrideProps) {
     }
 
     await unblockWebsite(url, message);
+    await Browser.storage.sync.remove(["visiting"]);
+    setVisiting(undefined);
     document.location.href = visiting || url;
-    Browser.storage.sync.remove("visiting");
   };
 
   useEffect(() => {
