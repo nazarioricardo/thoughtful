@@ -58,6 +58,10 @@ function Page({ url }: PageProps) {
         setAlternates(result[url].alternates);
       }
     });
+
+    Browser.storage.sync.get(["visiting"]).then((result) => {
+      console.log(result.visiting);
+    });
   }, []);
 
   return (

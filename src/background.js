@@ -31,6 +31,18 @@ Browser.runtime.onMessage.addListener(async ({ type, options }, sender) => {
   }
 });
 
+Browser.webNavigation.onBeforeNavigate.addListener(
+  async (details) => {
+    let url = new URL(details.url);
+    const rules = await Browser.declarativeNetRequest.getDynamicRules();
+    const blockedHosts = rules.map((rule) => rule.condition.urlFilter);
+    if (blockedHosts.includes(url.origin + "/")) {
+      Browser.storage.sync.set({ visiting: url.href });
+    }
+  },
+  { url: [{ schemes: ["http", "https"] }] }
+);
+
 const resetRules = async () => {
   const store = await Browser.storage.sync.get();
   const urls = Object.keys(store);
