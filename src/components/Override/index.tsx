@@ -3,6 +3,7 @@ import { ArrowRight } from "@mui/icons-material";
 import { Button, FormControl, FormLabel, Input } from "@mui/joy";
 import { FormEvent, useEffect, useState } from "react";
 import { unblockWebsite } from "../../utils";
+import { getHostName } from "../../constants";
 
 type OverrideProps = {
   url: string;
@@ -22,13 +23,17 @@ function Override({ url, hostname }: OverrideProps) {
     }
 
     await unblockWebsite(url, message);
+    await Browser.storage.sync.remove(["visiting"]);
+    setVisiting(undefined);
     document.location.href = visiting || url;
-    Browser.storage.sync.remove("visiting");
   };
 
   useEffect(() => {
     Browser.storage.sync.get(["visiting"]).then((result) => {
-      setVisiting(result.visiting);
+      const visitingHostName = getHostName(result.visiting);
+      if (visitingHostName === hostname) {
+        setVisiting(result.visiting);
+      }
     });
   }, []);
 
