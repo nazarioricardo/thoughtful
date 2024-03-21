@@ -15,9 +15,12 @@
     "webextension-polyfill": "^0.10.0"
   },
   "scripts": {
-    "build": "npm run chrome & npm run firefox",
-    "chrome": "webpack --config webpack.config.chrome.js",
-    "firefox": "webpack --config webpack.config.firefox.js",
+    "all": "npm run build && npm run package",
+    "chrome": "npm run build:chrome && npm run package:chrome",
+    "firefox": "npm run build:firefox && npm run package:firefox",
+    "build": "npm run build:chrome & npm run build:firefox",
+    "build:chrome": "webpack --config webpack.config.chrome.js",
+    "build:firefox": "webpack --config webpack.config.firefox.js",
     "package": "npm run package:chrome & npm run package:firefox",
     "package:chrome": "rm -f chrome.zip && zip -r chrome.zip chrome",
     "package:firefox": "rm -f firefox.zip && cd firefox && zip -r firefox.zip . && cd .. && mv firefox/firefox.zip .",
